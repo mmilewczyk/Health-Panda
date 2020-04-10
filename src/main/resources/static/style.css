@@ -1,0 +1,30 @@
+<style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+         }
+        .calculator{
+            clear: left;
+            float: left;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            background: #EFEFEF;
+            border: 3px solid #D8D8D8;
+            border-radius:10px;
+        }
+        .button{
+            height:20px;
+            margin:12px;
+            border:none;
+            border-radius:3px;
+            background: #adadad;
+            color:rgb(0, 0, 0);
+            font-size:11px;
+            cursor:pointer;
+        }
+        .button:hover{
+            background:#FF9500;
+        }
+</style>
