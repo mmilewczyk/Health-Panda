@@ -3,12 +3,41 @@
 <head>
     <title>BMR Calculator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <link rel="stylesheet" href="style.css">
+    <link href="css/scrolling-nav.css" rel="stylesheet">
 
 </head>
-<Body background="/jpg/background2.jpg">
-<div class="calculator">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">Health Care</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/#services">Usługi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/#contact">Kontakt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="">Zaloguj się</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container2">
     <h1>BMR Calculator - Oblicz swoje zapotrzebowanie kaloryczne!</h1>
     <form action="#" th:action="@{/bmr}" th:object="${bmr}" method="POST">
         <p>wiek:  <input type="text" th:field="*{age}"/></p>
@@ -16,12 +45,12 @@
         <p>waga:  <input type="text" th:field="*{bodyWeight}"/> </p>
         <p>
         <p>Określ swój tryb życia: </p>
-        <p><input type="submit" class="button" name="bmrCalculator" value="Leżący lub siedzący tryb życia, brak aktywności fizycznej"/>
-        <input type="submit" class="button" name="bmrCalculator12" value="Praca siedząca, aktywność fizyczna na niskim poziomie"/>
-        <input type="submit" class="button" name="bmrCalculator14" value="Praca nie fizyczna, trening 2 razy w tygodniu"/>
-        <input type="submit" class="button" name="bmrCalculator16" value="Lekka praca fizyczna, trening 3-4 razy w tygodniu"/>
-        <input type="submit" class="button" name="bmrCalculator18" value="Praca fizyczna, trening 5 razy w tygodniu"/>
-        <input type="submit" class="button" name="bmrCalculator20" value="Ciężka praca fizyczna, codzienny trening"/></p>
+        <p><input type="submit" class="btn btn-success" name="bmrCalculator" value="Leżący lub siedzący tryb życia, brak aktywności fizycznej"/>
+        <input type="submit" class="btn btn-success" name="bmrCalculator12" value="Praca siedząca, aktywność fizyczna na niskim poziomie"/>
+        <input type="submit" class="btn btn-success" name="bmrCalculator14" value="Praca nie fizyczna, trening 2 razy w tygodniu"/>
+        <input type="submit" class="btn btn-success" name="bmrCalculator16" value="Lekka praca fizyczna, trening 3-4 razy w tygodniu"/>
+        <input type="submit" class="btn btn-success" name="bmrCalculator18" value="Praca fizyczna, trening 5 razy w tygodniu"/>
+        <input type="submit" class="btn btn-success" name="bmrCalculator20" value="Ciężka praca fizyczna, codzienny trening"/></p>
         </p>
         <h3><p th:text="'Twoje zapotrzebowanie kaloryczne wynosi ' + ${result} + ' kcal'"></p></h3>
     </form>

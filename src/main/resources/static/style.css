@@ -3,16 +3,14 @@
             margin:0;
             padding:0;
          }
-        .calculator{
+        .container2{
             clear: left;
             float: left;
             position: absolute;
             top:50%;
             left:50%;
             transform: translate(-50%,-50%);
-            background: #EFEFEF;
-            border: 3px solid #D8D8D8;
-            border-radius:10px;
+
         }
         .button{
             height:20px;
