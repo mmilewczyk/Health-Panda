@@ -43,29 +43,22 @@
     </div>
 </nav>
 <header>
-<div class="container text-center align-content-center col-sm-9 col-md-7 col-lg-5 mx-auto">
-    <div class="card card-signin my-5">
-        <div class="card-body">
-    <h1>Kalkulator BMR</h1>
-            <p>Oblicz swoje zapotrzebowanie kaloryczne!</p>
-    <form action="#" th:action="@{/bmr}" th:object="${bmr}" method="POST">
-        <p>wiek:  <input type="text" th:field="*{age}"/></p>
-        <p>wzrost:  <input type="text" th:field="*{height}"/> </p>
-        <p>waga:  <input type="text" th:field="*{bodyWeight}"/> </p>
-        <p>
-        <p>Określ swój tryb życia: </p>
-        <p class = "dropdown"><input type="submit" class="btn btn-success" name="bmrCalculator" value="Leżący lub siedzący tryb życia, brak aktywności fizycznej"/></p>
-        <p class = "dropdown"><input type="submit" class="btn btn-success" name="bmrCalculator12" value="Praca siedząca, aktywność fizyczna na niskim poziomie"/></p>
-        <p class = "dropdown"><input type="submit" class="btn btn-success" name="bmrCalculator14" value="Praca nie fizyczna, trening 2 razy w tygodniu"/></p>
-        <p class = "dropdown"><input type="submit" class="btn btn-success" name="bmrCalculator16" value="Lekka praca fizyczna, trening 3-4 razy w tygodniu"/></p>
-        <p class = "dropdown"><input type="submit" class="btn btn-success" name="bmrCalculator18" value="Praca fizyczna, trening 5 razy w tygodniu"/></p>
-        <p class = "dropdown"><input type="submit" class="btn btn-success" name="bmrCalculator20" value="Ciężka praca fizyczna, codzienny trening"/></p>
-        </p>
-        <h3><p th:text="'Twoje zapotrzebowanie kaloryczne wynosi ' + ${result} + ' kcal'"></p></h3>
-    </form>
-</div>
+    <div class="container text-center align-content-center col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+            <div class="card-body">
+                <h1>Kalkulator BMI</h1>
+                <p>Wskaźnik masy ciała, sprawdź czy zagraża Ci nadwaga lub otyłość!</p>
+                <form action="#" th:action="@{/bmi}" th:object="${bmi}" method="POST">
+                    <p>waga:  <input type="text" th:field="*{mass}"/></p>
+                    <p>wzrost:  <input type="text" th:field="*{height}"/> </p>
+                    <p>
+                    <p class = "dropdown"><input type="submit" class="btn btn-success" name="bmiCalculator" value="Oblicz"/></p>
+                    </p>
+                    <h3><p th:text="'Twój wskaźnik BMI to: ' + ${result}"></p></h3>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 </header>
 <!-- Footer -->
 <footer class="py-5 bg-dark">
