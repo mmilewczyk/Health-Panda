@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Health Care</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+
+<!-- Navigation -->
+<div th:insert="fragments/navbar.html"> </div>
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+                <div class="card card-signin flex-row my-5">
+                    <div class="card-img-left d-none d-md-flex">
+                        <!-- Background image for card set in CSS! -->
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Register</h5>
+                        <form class="form-signin" action="#" th:action="@{/register}" th:object="${user}" method="POST">
+                            <div class="form-label-group">
+<!--                                <p><input type="text" th:field="*{userName}"/></p>-->
+                            </div>
+
+                            <div class="form-label-group">
+<!--                                <p><input type="text" th:field="*{email}"/></p>-->
+                            </div>
+
+                            <hr>
+
+                            <div class="form-label-group">
+<!--                                <p>Hasło: <input type="text" th:field="*{password}"/></p>-->
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" th:text="${result}" type="submit">Register</button>
+                            <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+                            <hr class="my-4">
+                            <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+                            <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Footer -->
+<div th:insert="fragments/fotter.html"> </div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom JavaScript for this theme -->
+<script src="js/scrolling-nav.js"></script>
+</body>
+</html>

@@ -24,11 +24,6 @@ public class BMRControler {
         model.addAttribute("bmr", bmr);
         return "bmr";
     }
-    @RequestMapping("/login")
-    public String getLoginPage(BMR bmr, Model model){
-        model.addAttribute("login", bmr);
-        return "login";
-    }
 
     @RequestMapping(value="/bmr", params="bmrCalculator", method = RequestMethod.POST)
     public String bmrCalculator(@ModelAttribute("bmr") BMR bmr, Model model ){
