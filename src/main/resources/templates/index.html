@@ -19,8 +19,8 @@
 
 <body id="page-top">
 
-  <!-- Navigation -->
-  <div th:insert="fragments/navbar.html"> </div>
+<!-- Navigation -->
+<div th:insert="fragments/navbar.html"> </div>
 
   <header class="bg-success text-white">
     <div class="container text-center" >
@@ -31,8 +31,8 @@
 
   <section id="about">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
+      <div class="row card wow fadeInRight" data-wow-delay="0.3s">
+        <div class="col-lg-8 mx-auto" back>
           <h2>Krótko o nas</h2>
           <p class="lead"> Jesteśmy nową witryną na rynku, której celem jest pomoc w obserwacji swoich postępów, jak i samego przygotowania do tej pięknej przygody - jaką jest uprawianie sportu.</p>
           <p>W przyszłości planujemy wprowadzić:</p>
@@ -50,14 +50,14 @@
   <section id="services" class="bg-light">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mx-auto">
+        <div class="col-lg-8 mx-auto text-center">
           <h1>Usługi które oferujemy</h1>
           <p class="lead">Strona jest w trakcie budowy, jednakże już teraz oferujemy Państwu jedną z usług, która będzie dostępna również w przyszłości.</p>
 
           <h3>Kalkulator BMR</h3>
           <p>Zastanawiasz się ile powinieneś jeść? Masz dosyć szukania wzorów matematycznych, by wyliczyć swoje zapotrzebowanie kaloryczne? Zrobimy to za ciebie!</p>
           <a href="/bmr" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Kalkulator BMR</a>
-
+          <hr class="my-4">
           <h3>Kalkulator BMI</h3>
           <p>BMI to wskaźnik, który ocenia czy waga jest proporcjonalna do wzrostu. Prawidłowe BMI mieści się w przedziale 18,5-25. BMI nie bierze jednak pod uwagę zawartości tkanki tłuszczowej, dlatego wynik należy traktować orientacyjnie.</p>
           <a href="/bmi" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Kalkulator BMI</a>
