@@ -25,6 +25,7 @@ public class UserController {
         model.addAttribute("login", user);
         return "login";
     }
+
     @RequestMapping("/register")
     public String getRegisterPage(User user, Model model){
         model.addAttribute("register", user);

@@ -1,9 +1,9 @@
 package com.agiklo.HeathProject.repository;
 
-import com.agiklo.HeathProject.model.User;
+import com.agiklo.HeathProject.model.Training;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository <User, Long> {
+public interface TrainingRepository extends JpaRepository<Training, Long> {
 }
