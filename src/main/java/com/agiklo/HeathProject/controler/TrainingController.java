@@ -15,7 +15,7 @@ public class TrainingController {
         this.trainingRepository = trainingRepository;
     }
 
-    @RequestMapping(value="/addWorkout", method = RequestMethod.POST)
+    @RequestMapping(value="/workout", method = RequestMethod.POST)
     public String addWorkout(@RequestBody Training training, Model model ){
         model.addAttribute("result", trainingRepository.saveAndFlush(training));
         return "workout";

@@ -2,37 +2,43 @@ package com.agiklo.HeathProject.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 
 @EnableWebSecurity
+@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Bean
+    public UserDetailsService userDetailsService(){
+        UserDetails admin = User.withDefaultPasswordEncoder()
+                .username("Mateusz").password("123").roles("ADMIN").build();
+        UserDetails user = User.withDefaultPasswordEncoder()
+                .username("User").password("123").roles("USER").build();
+        return new InMemoryUserDetailsManager(admin, user);
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                //.antMatchers("/addWorkout").hasAnyRole("ADMIN")
+        http.httpBasic().and().authorizeRequests()
                 .antMatchers("/console/**").hasRole("ADMIN")
-                .antMatchers("/").permitAll()
+                .antMatchers(HttpMethod.GET,"/workout").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.DELETE,"/workout").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/workout").hasRole("ADMIN")
                 .and()
-                .httpBasic();
-
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
-
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("agiklo")
-                .password("123")
-                .roles("ADMIN")
+                .formLogin()
                 .and()
-                .withUser("gosc").password("gosc").roles("USER");
+                .logout()
+                .and()
+                .csrf().disable();
     }
-
 }
