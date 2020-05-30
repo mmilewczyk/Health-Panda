@@ -8,8 +8,8 @@ public class BMRService {
 
     //1,0 – leżący lub siedzący tryb życia, brak aktywności fizycznej
     public double bmrCalculator(BMR bmr){
-        double bmrValue = 66 + (13.7 * bmr.getBodyWeight()) + (5 * bmr.getHeight()) - (6.76 * bmr.getAge());
-        return bmrValue;
+            double bmrValue = 66 + (13.7 * bmr.getBodyWeight()) + (5 * bmr.getHeight()) - (6.76 * bmr.getAge());
+            return bmrValue;
     }
 
     //1,2 – praca siedząca, aktywność fizyczna na niskim poziomie
