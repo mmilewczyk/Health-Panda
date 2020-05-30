@@ -37,8 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE,"/workout").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST,"/workout").hasRole("ADMIN")
                 .and()
-                .formLogin()
-                .and()
                 .logout()
                 .and()
                 .csrf().disable();
