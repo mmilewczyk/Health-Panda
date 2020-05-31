@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Home - Brand</title>
+  <title>Health Panda</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
@@ -15,28 +15,18 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
-  <div class="container"><a class="navbar-brand" href="#" style="font-family: Lato, sans-serif;">Health Panda</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse"
-         id="navbarResponsive"><a href="#"></a>
-      <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item" role="presentation"><a class="nav-link" href="#">Usługi</a></li>
-        <li class="nav-item" role="presentation"><a class="nav-link" href="/login">Zaloguj się</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div th:insert="fragments/navbar.html"> </div>
 <header class="masthead text-center text-white" style="background-image: url(&quot;assets/img/background.jpg&quot;);height: 750px;">
   <div class="masthead-content">
     <div class="container">
       <h1 class="masthead-heading mb-0">Health Panda</h1>
-      <h2 class="masthead-subheading mb-0" style="font-size: 20px;opacity: 1;color: rgb(255,255,255);">Twój najlepszy przyjaciel w przygodzie do osiągnięcia wymarzonej sylwetki.<br><br></h2><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="index.html">O nas</a></div>
+      <h2 class="masthead-subheading mb-0" style="font-size: 20px;opacity: 1;color: rgb(255,255,255);">Twój najlepszy przyjaciel w przygodzie do osiągnięcia wymarzonej sylwetki.<br><br></h2><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="/">O nas</a></div>
   </div>
   <div class="bg-circle-1 bg-circle" style="height: 1031px;"></div>
   <div class="bg-circle-2 bg-circle" style="height: 523px;"></div>
   <div class="d-none bg-circle-3 bg-circle" style="width: 282px;height: 255px;"></div>
 </header>
-<section>
+<section >
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6 order-lg-2">
@@ -102,11 +92,8 @@
     </form>
   </div>
 </div>
-<footer class="py-5 bg-black">
-  <div class="container">
-    <p class="text-center text-white m-0 small">Copyright&nbsp;© Health Panda 2020</p>
-  </div>
-</footer>
+<!-- Footer -->
+<div th:insert="fragments/fotter.html"> </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/bs-init.js"></script>
