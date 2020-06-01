@@ -11,11 +11,13 @@ import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+@EnableWebSecurity
 //@EnableOAuth2Sso
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -41,12 +43,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                //.antMatchers("/console/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/workout").access("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
-                .antMatchers(HttpMethod.DELETE,"/workout").access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.POST,"/workout").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/workout").hasAnyRole("ADMIN","USER")
+                .antMatchers(HttpMethod.DELETE,"/workout").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST,"/workout").hasRole("ADMIN")
                 .and()
-                .formLogin().permitAll();
+                .formLogin()
+                    .defaultSuccessUrl("/", true)
+                    .permitAll()
+                .and()
+                .logout()
+                    .permitAll()
+                    .deleteCookies("JSESSIONID")
+                    .logoutSuccessUrl("/")
+                    .invalidateHttpSession(true)
+        .and()
+        .csrf().disable();
     }
 
     @EventListener(ApplicationReadyEvent.class)
