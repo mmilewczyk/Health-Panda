@@ -1,44 +1,59 @@
 package com.agiklo.HeathProject.security;
 
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import com.agiklo.HeathProject.model.User;
+import com.agiklo.HeathProject.repository.UserRepository;
+import com.agiklo.HeathProject.service.UserDetailsServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@EnableWebSecurity
 @Configuration
-@EnableOAuth2Sso
+//@EnableOAuth2Sso
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private UserDetailsServiceImpl userDetailsService;
+    private UserRepository userRepository;
+
+    @Autowired
+    public SecurityConfig(UserDetailsServiceImpl userDetailsService, UserRepository userRepository) {
+        this.userDetailsService = userDetailsService;
+        this.userRepository = userRepository;
+    }
+
     @Bean
-    public PasswordEncoder PasswordEncoder(){
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("Mateusz").password(PasswordEncoder().encode("123")).roles("ADMIN")
-                .and()
-                .withUser("Angelika").password(PasswordEncoder().encode("123")).roles("USER");
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic().and().authorizeRequests()
-                .antMatchers("/console/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,"/workout").hasAnyRole("USER", "ADMIN")
-                .antMatchers(HttpMethod.DELETE,"/workout").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,"/workout").hasRole("ADMIN")
+        http.authorizeRequests()
+                //.antMatchers("/console/**").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,"/workout").access("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
+                .antMatchers(HttpMethod.DELETE,"/workout").access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST,"/workout").access("hasRole('ROLE_ADMIN')")
                 .and()
-                .logout()
-                .and()
-                .csrf().disable();
+                .formLogin().permitAll();
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void createUsers(){
+        User admin = new User("Mateusz", passwordEncoder().encode("123"), "ROLE_ADMIN");
+        User user = new User("Angelika", passwordEncoder().encode("123"),"ROLE_USER");
+        userRepository.save(admin);
+        userRepository.save(user);
     }
 }
