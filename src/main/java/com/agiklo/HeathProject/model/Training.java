@@ -15,8 +15,8 @@ public class Training {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String  exercise; //of workout
-    private Integer series; //how many series
-    private Integer amount; //at all training
+    private String exercise; //of workout
+    private String series; //how many series
+    private String amount; //at all training
     private String date;
 }
