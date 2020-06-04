@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class TrainingController {
+
     private TrainingRepository trainingRepository;
 
     @Autowired
@@ -27,10 +30,11 @@ public class TrainingController {
         return "redirect:/workout";
     }
 
-    @GetMapping("/workout")
-    @ResponseBody
-    public Iterable<Training> showWorkouts(){
-        return trainingRepository.findAll();
+    @RequestMapping(value = "/workout", method = RequestMethod.GET)
+    public String showWorkouts(Training training, Model model){
+        List<Training> workoutList = trainingRepository.findAll();
+        model.addAttribute("trainings", workoutList);
+        return "workout";
     }
 
     @RequestMapping(path = "/workout", method = RequestMethod.DELETE)
