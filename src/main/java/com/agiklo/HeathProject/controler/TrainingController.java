@@ -1,6 +1,5 @@
 package com.agiklo.HeathProject.controler;
 
-import com.agiklo.HeathProject.model.BMR;
 import com.agiklo.HeathProject.model.Training;
 import com.agiklo.HeathProject.repository.TrainingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +16,15 @@ public class TrainingController {
         this.trainingRepository = trainingRepository;
     }
 
-    @RequestMapping("/addworkout")
-    public String getBmrPage(Training training, Model model){
+    @RequestMapping(value = "/addworkout", method = RequestMethod.GET)
+    public String getAddWorkoutPage(Training training, Model model){
         model.addAttribute("training", training);
         return "addworkout";
     }
     @RequestMapping(value="/addworkout", method = RequestMethod.POST)
-    public String addWorkout(@RequestBody Training training, Model model ){
+    public String addWorkout(Training training, Model model ){
         model.addAttribute("result", trainingRepository.saveAndFlush(training));
-        return "addworkout";
+        return "redirect:/workout";
     }
 
     @GetMapping("/workout")
