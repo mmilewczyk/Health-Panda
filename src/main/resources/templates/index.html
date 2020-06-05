@@ -80,7 +80,8 @@
       <div class="col-sm-6 col-md-5 col-lg-4 item">
         <div class="box"><i class="fa fa-clock-o icon" data-bs-hover-animate="bounce" style="color: rgb(253,96,12);"></i>
           <h3 class="name">Śledź swoje postępy</h3>
-          <p class="description">Ćwiczysz regularnie i masz dosyć zastanawiania się czy odnosisz progres w tym co robisz? W Health Panda umożliwiamy ci dodawanie swoich ulubionych ćwiczeń i śledzenie swoich postępów!</p><a href="/workout"><button class="btn btn-primary" type="button">WERSJA BETA</button></a>
+          <p class="description">Ćwiczysz regularnie i masz dosyć zastanawiania się czy odnosisz progres w tym co robisz? W Health Panda umożliwiamy ci dodawanie swoich ulubionych ćwiczeń i śledzenie swoich postępów!</p>
+          <a href="/workout"><button class="btn btn-primary" type="button">WERSJA BETA</button></a>
         </div>
       </div>
       <div class="col-sm-6 col-md-5 col-lg-4 item">
@@ -105,7 +106,12 @@
 </div>
 </section>
 <!-- Footer -->
-<div th:insert="fragments/fotter.html"> </div>
+<footer class="fotter py-5 bg-dark">
+  <div>
+    <p class="m-0 text-center text-white">Copyright &copy; 2020 Health Panda | Made with &#9749 by
+      <a href="https://github.com/agiklo">Mateusz Milewczyk</a></p>
+  </div>
+</footer>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/bs-init.js"></script>

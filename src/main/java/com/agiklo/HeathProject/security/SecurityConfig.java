@@ -44,11 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 //.antMatchers("/workout").hasAnyRole("ADMIN","USER")
-                .antMatchers(HttpMethod.DELETE,"/workout").hasRole("ADMIN")
+                .antMatchers("/workout/delete").authenticated()
+                .antMatchers(HttpMethod.GET, "/workout").authenticated()
+                .antMatchers(HttpMethod.GET, "/addworkout").authenticated()
                 //.antMatchers(HttpMethod.POST,"/workout").hasRole("ADMIN")
                 .and()
                 .formLogin()
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/workout", true)
                     .permitAll()
                 .and()
                 .logout()
@@ -62,9 +64,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @EventListener(ApplicationReadyEvent.class)
     public void createUsers(){
-        User admin = new User("Mateusz", passwordEncoder().encode("123"), "ROLE_ADMIN");
-        User user = new User("Angelika", passwordEncoder().encode("123"),"ROLE_USER");
-        userRepository.save(admin);
-        userRepository.save(user);
+//        User admin = new User("Mateusz", passwordEncoder().encode("123"), "ROLE_ADMIN");
+//        User user = new User("Angelika", passwordEncoder().encode("123"),"ROLE_USER");
+//        userRepository.save(admin);
+//        userRepository.save(user);
     }
 }
