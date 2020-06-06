@@ -37,6 +37,12 @@ public class TrainingController {
         model.addAttribute("trainings", workoutList);
         return "workout";
     }
+    @RequestMapping(value = "/workout/update")
+    public String update(@RequestParam Long id, Training training, Model model) {
+        trainingRepository.deleteById(id);
+        model.addAttribute("result", trainingRepository.saveAndFlush(training));
+        return "addworkout";
+    }
 
     @RequestMapping(value = "/workout/delete")
     public String delete(@RequestParam Long id){
