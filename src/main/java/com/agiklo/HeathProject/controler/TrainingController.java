@@ -1,23 +1,22 @@
 package com.agiklo.HeathProject.controler;
 
 import com.agiklo.HeathProject.model.Training;
-import com.agiklo.HeathProject.repository.TrainingRepository;
+import com.agiklo.HeathProject.service.TrainingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller
 public class TrainingController {
 
-    private TrainingRepository trainingRepository;
+    private TrainingService trainingService;
 
     @Autowired
-    public TrainingController(TrainingRepository trainingRepository) {
-        this.trainingRepository = trainingRepository;
+    public TrainingController(TrainingService trainingService) {
+        this.trainingService = trainingService;
     }
 
     @RequestMapping(value = "/addworkout", method = RequestMethod.GET)
@@ -27,26 +26,55 @@ public class TrainingController {
     }
     @RequestMapping(value="/addworkout", method = RequestMethod.POST)
     public String addWorkout(Training training, Model model ){
-        model.addAttribute("result", trainingRepository.saveAndFlush(training));
+        model.addAttribute("result", trainingService.addNewWorkout(training));
         return "redirect:/workout";
+    }
+
+    @RequestMapping(value = "/workout/sorted-by-date-newer", method = RequestMethod.GET)
+    public String workoutsSortedByDateNewer(Training training, Model model, String date){
+        List<Training> workoutList = trainingService.findAllSortedByDateNewer(date);
+        model.addAttribute("trainings", workoutList);
+        return "workout";
+    }
+
+    @RequestMapping(value = "/workout/sorted-by-date-older", method = RequestMethod.GET)
+    public String workoutsSortedByDateOlder(Training training, Model model, String date){
+        List<Training> workoutList = trainingService.findAllSortedByDateOlder(date);
+        model.addAttribute("trainings", workoutList);
+        return "workout";
+    }
+
+    @RequestMapping(value = "/workout/sorted-by-amount-most", method = RequestMethod.GET)
+    public String workoutsSortedByAmountMost(Training training, Model model, String amount) {
+        List<Training> workoutList = trainingService.findAllSortedByAmountMost(amount);
+        model.addAttribute("trainings", workoutList);
+        return "workout";
+    }
+
+    @RequestMapping(value = "/workout/sorted-by-amount-least", method = RequestMethod.GET)
+    public String workoutsSortedByAmountLeast(Training training, Model model, String amount) {
+        List<Training> workoutList = trainingService.findAllSortedByAmountLeast(amount);
+        model.addAttribute("trainings", workoutList);
+        return "workout";
     }
 
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
     public String showWorkouts(Training training, Model model){
-        List<Training> workoutList = trainingRepository.findAll();
+        List<Training> workoutList = trainingService.findAllWorkouts();
         model.addAttribute("trainings", workoutList);
         return "workout";
     }
+
     @RequestMapping(value = "/workout/update")
     public String update(@RequestParam Long id, Training training, Model model) {
-        trainingRepository.deleteById(id);
-        model.addAttribute("result", trainingRepository.saveAndFlush(training));
+        trainingService.deleteWorkout(id);
+        model.addAttribute("result", trainingService.addNewWorkout(training));
         return "addworkout";
     }
 
     @RequestMapping(value = "/workout/delete")
     public String delete(@RequestParam Long id){
-        trainingRepository.deleteById(id);
+        trainingService.deleteWorkout(id);
         return "redirect:/workout";
     }
 }

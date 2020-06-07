@@ -56,6 +56,15 @@
                     </tr>
                     </tbody>
                 </table>
+                <div class="btn-group"><button class="btn btn-primary" type="button">Sortuj według</button>
+                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
+                    <div role="menu" class="dropdown-menu">
+                        <a th:href="${'/workout/sorted-by-date-newer'}" th:method="get" role="presentation" class="dropdown-item">Najnowsze</a>
+                        <a th:href="${'/workout/sorted-by-date-older'}" th:method="get" role="presentation" class="dropdown-item">Najstarsze</a>
+                        <a th:href="${'/workout/sorted-by-amount-most'}" th:method="get" role="presentation" class="dropdown-item">Najwięcej powtórzeń</a>
+                        <a th:href="${'/workout/sorted-by-amount-least'}" th:method="get" role="presentation" class="dropdown-item">Najmniej powtórzeń</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
