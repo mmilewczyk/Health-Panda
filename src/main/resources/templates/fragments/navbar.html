@@ -1,4 +1,3 @@
-<html xmlns:th="http://www.thymeleaf.org">
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
     <div class="container"><a class="navbar-brand" href="/" style="font-family: Lato, sans-serif;">Health Panda</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
@@ -17,7 +16,7 @@
                                             <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
                                         </div>
                                         lub
-                                        <form class="form" role="form" method="post" action="login"th:action="@{/login}" th:object="${}" method="POST" accept-charset="UTF-8" id="login-nav">
+                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                                             <div class="form-group">
                                                 <label class="sr-only" for="exampleInputEmail2">Nazwa użytkownika</label>
                                                 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
@@ -55,4 +54,3 @@
         overflow: hidden;
     }
 </style>
-</html>
