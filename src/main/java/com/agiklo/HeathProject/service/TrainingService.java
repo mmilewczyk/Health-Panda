@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -24,6 +22,22 @@ public class TrainingService {
 
     public Training addNewWorkout(Training training){
         return trainingRepository.saveAndFlush(training);
+    }
+    public Training editWorkout(@RequestBody Training training, @PathVariable Long id){
+        trainingRepository.deleteById(id);
+        Training trainingToUpdate = training;
+        return trainingRepository.save(trainingToUpdate);
+//                .map(training1 -> {
+//                    training.setDate(training.getDate());
+//                    training.setExercise(training.getExercise());
+//                    training.setSeries(training.getSeries());
+//                    training.setAmount(training.getAmount());
+//                    return trainingRepository.save(training);
+//                })
+//                .orElseGet(() -> {
+//                    training.setId(id);
+//                    return trainingRepository.save(training);
+//                });
     }
 
     public List<Training> findAllWorkouts(){
@@ -43,10 +57,10 @@ public class TrainingService {
     }
 
     public List<Training> findAllSortedByAmountMost(String amount){
-        return trainingRepository.findAll(Sort.by(Sort.Direction.DESC, "amount"));
+        return trainingRepository.findAll(Sort.by(Sort.Direction.ASC, "amount"));
     }
 
     public List<Training> findAllSortedByAmountLeast(String amount){
-        return trainingRepository.findAll(Sort.by(Sort.Direction.ASC, "amount"));
+        return trainingRepository.findAll(Sort.by(Sort.Direction.DESC, "amount"));
     }
 }

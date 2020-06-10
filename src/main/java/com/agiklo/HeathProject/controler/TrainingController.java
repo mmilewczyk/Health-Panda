@@ -19,56 +19,55 @@ public class TrainingController {
         this.trainingService = trainingService;
     }
 
-    @RequestMapping(value = "/addworkout", method = RequestMethod.GET)
+    @RequestMapping(value = "/workout/add-new", method = RequestMethod.GET)
     public String getAddWorkoutPage(Training training, Model model){
         model.addAttribute("training", training);
         return "addworkout";
     }
-    @RequestMapping(value="/addworkout", method = RequestMethod.POST)
+    @RequestMapping(value="/workout/add-new", method = RequestMethod.POST)
     public String addWorkout(Training training, Model model ){
         model.addAttribute("result", trainingService.addNewWorkout(training));
         return "redirect:/workout";
     }
 
     @RequestMapping(value = "/workout/sorted-by-date-newer", method = RequestMethod.GET)
-    public String workoutsSortedByDateNewer(Training training, Model model, String date){
+    public String workoutsSortedByDateNewer(Model model, String date){
         List<Training> workoutList = trainingService.findAllSortedByDateNewer(date);
         model.addAttribute("trainings", workoutList);
         return "workout";
     }
 
     @RequestMapping(value = "/workout/sorted-by-date-older", method = RequestMethod.GET)
-    public String workoutsSortedByDateOlder(Training training, Model model, String date){
+    public String workoutsSortedByDateOlder(Model model, String date){
         List<Training> workoutList = trainingService.findAllSortedByDateOlder(date);
         model.addAttribute("trainings", workoutList);
         return "workout";
     }
 
     @RequestMapping(value = "/workout/sorted-by-amount-most", method = RequestMethod.GET)
-    public String workoutsSortedByAmountMost(Training training, Model model, String amount) {
+    public String workoutsSortedByAmountMost(Model model, String amount) {
         List<Training> workoutList = trainingService.findAllSortedByAmountMost(amount);
         model.addAttribute("trainings", workoutList);
         return "workout";
     }
 
     @RequestMapping(value = "/workout/sorted-by-amount-least", method = RequestMethod.GET)
-    public String workoutsSortedByAmountLeast(Training training, Model model, String amount) {
+    public String workoutsSortedByAmountLeast(Model model, String amount) {
         List<Training> workoutList = trainingService.findAllSortedByAmountLeast(amount);
         model.addAttribute("trainings", workoutList);
         return "workout";
     }
 
     @RequestMapping(value = "/workout", method = RequestMethod.GET)
-    public String showWorkouts(Training training, Model model){
+    public String showWorkouts(Model model, Training training){
         List<Training> workoutList = trainingService.findAllWorkouts();
         model.addAttribute("trainings", workoutList);
         return "workout";
     }
 
     @RequestMapping(value = "/workout/update")
-    public String update(@RequestParam Long id, Training training, Model model) {
-        trainingService.deleteWorkout(id);
-        model.addAttribute("result", trainingService.addNewWorkout(training));
+    public String updateWorkout(@RequestParam Long id, Training training, Model model) {
+        model.addAttribute("result", trainingService.editWorkout(training, id));
         return "addworkout";
     }
 

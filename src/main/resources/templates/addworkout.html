@@ -16,60 +16,60 @@
 </head>
 
 <body style="background-image: url(&quot;assets/img/sierra-nevada-4719258_1920.jpg&quot;);background-position: top;background-size: auto;background-repeat: no-repeat;">
-    <div id="wrapper">
-        <div id="sidebar-wrapper" style="background-color: rgb(47,52,56);">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand"> <a href="/" style="color: rgb(232,20,112);"><strong>Health Panda</strong></a></li>
-                <li> <a href="/workout">Ćwiczenia</a></li>
-                <li> <a href="/meals">Posiłki</a><a href="/bmr">Kalkulatory&nbsp;</a></li>
-                <li> <a href="/settings">Ustawienia</a><a href="/logout">Wyloguj się</a></li>
-            </ul>
-        </div>
-        <div class="page-content-wrapper">
-            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars" style="color: rgb(253,95,13);"></i></a></div>
-        </div>
+<div id="wrapper">
+    <div id="sidebar-wrapper" style="background-color: rgb(47,52,56);">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand"> <a href="/" style="color: rgb(232,20,112);"><strong>Health Panda</strong></a></li>
+            <li> <a href="/workout">Ćwiczenia</a></li>
+            <li> <a href="/meals">Posiłki</a><a href="/bmr">Kalkulatory&nbsp;</a></li>
+            <li> <a href="/settings">Ustawienia</a><a href="/logout">Wyloguj się</a></li>
+        </ul>
     </div>
-    <div class="container">
-        <div>
-            <form action="#" th:action="@{/addworkout}" th:object="${training}" method="POST">
-                <div class="form-group">
-                    <div class="border rounded shadow-none" id="formdiv" style="background-color: #ffffff;">
-                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                            <div class="col-md-8 offset-md-1">
-                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Ćwiczenie</strong></p>
-                            </div>
-                            <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{exercise}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="name" placeholder="Nazwa ćwiczenia"></div>
+    <div class="page-content-wrapper">
+        <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars" style="color: rgb(253,95,13);"></i></a></div>
+    </div>
+</div>
+<div class="container">
+    <div>
+        <form action="#" th:action="@{/workout/add-new}" th:object="${training}" method="POST">
+            <div class="form-group">
+                <div class="border rounded shadow-none" id="formdiv" style="background-color: #ffffff;">
+                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                        <div class="col-md-8 offset-md-1">
+                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Ćwiczenie</strong></p>
                         </div>
-                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                            <div class="col-md-8 offset-md-1">
-                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Data treningu</strong></p>
-                            </div>
-                            <div class="col-md-10 offset-md-1"><input class="form-control" style="font-family:Roboto, sans-serif;" name="birthDate" type="date" th:field="*{date}"> </div>
+                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{exercise}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="name" placeholder="Nazwa ćwiczenia"></div>
+                    </div>
+                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                        <div class="col-md-8 offset-md-1">
+                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Data treningu</strong></p>
                         </div>
-                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                            <div class="col-md-8 offset-md-1 offset-xl-1">
-                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Ilość serii</strong></p>
-                            </div>
-                            <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{series}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Ilość serii"></div>
+                        <div class="col-md-10 offset-md-1"><input class="form-control" style="font-family:Roboto, sans-serif;" name="birthDate" type="date" th:field="*{date}"> </div>
+                    </div>
+                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                        <div class="col-md-8 offset-md-1 offset-xl-1">
+                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Ilość serii</strong></p>
                         </div>
-                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                            <div class="col-md-8 offset-md-1">
-                                <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Ilość powtórzeń</strong></p>
-                            </div>
-                            <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{amount}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Ilość powtórzeń"></div>
+                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{series}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Ilość serii"></div>
+                    </div>
+                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                        <div class="col-md-8 offset-md-1">
+                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Ilość powtórzeń</strong></p>
                         </div>
-                        <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                            <div class="col-12 col-md-4 offset-md-4"><button class="btn btn-light btn-lg" style="font-family:Roboto, sans-serif;" type="reset">WYCZYŚĆ</button><button class="btn btn-light btn-lg" style="margin-left: 16px;background-color: rgb(232,20,112);color: rgb(255,255,255);"
-                                    type="submit" ><strong>DODAJ</strong></button></div>
-                        </div>
+                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{amount}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Ilość powtórzeń"></div>
+                    </div>
+                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
+                        <div class="col-12 col-md-4 offset-md-4"><button class="btn btn-light btn-lg" style="font-family:Roboto, sans-serif;" type="reset">WYCZYŚĆ</button><button class="btn btn-light btn-lg" style="margin-left: 16px;background-color: rgb(232,20,112);color: rgb(255,255,255);"
+                                                                                                                                                                                   type="submit" ><strong>DODAJ</strong></button></div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/Sidebar-Menu.js"></script>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/Sidebar-Menu.js"></script>
 <div th:insert="fragments/fotter.html"> </div>
 </body>
 
