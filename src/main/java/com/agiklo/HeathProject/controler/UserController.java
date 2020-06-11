@@ -1,10 +1,8 @@
 package com.agiklo.HeathProject.controler;
 
-import com.agiklo.HeathProject.model.User;
 import com.agiklo.HeathProject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -18,15 +16,14 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping("/registration")
-    public String getRegistrationPage(User user, Model model){
-        model.addAttribute("registration", user);
-        return "registration";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String addNewUser(User user, Model model){
-        model.addAttribute("result", userRepository.saveAndFlush(user));
-        return "redirect:/login";
+    @GetMapping("/access-denied")
+    public String accessDenied() {
+        return "/error/access-denied";
     }
+
 }
