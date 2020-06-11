@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/workout/**").authenticated()
+                .antMatchers("/meal/**").authenticated()
                 .and()
                 .formLogin()
                     .defaultSuccessUrl("/workout", true)
@@ -58,11 +59,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().disable();
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void createUsers(){
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void createUsers(){
 //        User admin = new User("Mateusz", passwordEncoder().encode("123"), "ROLE_ADMIN");
 //        User user = new User("Angelika", passwordEncoder().encode("123"),"ROLE_USER");
 //        userRepository.save(admin);
 //        userRepository.save(user);
-    }
+//    }
 }

@@ -19,4 +19,7 @@ public class Training {
     private String series; //how many series
     private String amount; //at all training
     private String date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }

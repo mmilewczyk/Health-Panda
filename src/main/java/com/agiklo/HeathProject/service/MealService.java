@@ -1,9 +1,13 @@
 package com.agiklo.HeathProject.service;
 
 import com.agiklo.HeathProject.model.Meal;
+import com.agiklo.HeathProject.model.Training;
 import com.agiklo.HeathProject.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -37,5 +41,18 @@ public class MealService {
 
     public void delete(Long id){
         mealRepository.deleteById(id);
+    }
+
+    public Meal editMeal(@RequestBody Meal meal, @PathVariable Long id){
+        Meal mealToUpdate = meal;
+        return mealRepository.save(mealToUpdate);
+    }
+
+    public List<Meal> findAllSortedByTimeMost(String time){
+        return mealRepository.findAll(Sort.by(Sort.Direction.DESC, "time"));
+    }
+
+    public List<Meal> findAllSortedByTimeLeast(String time){
+        return mealRepository.findAll(Sort.by(Sort.Direction.ASC, "time"));
     }
 }

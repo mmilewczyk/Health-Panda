@@ -27,17 +27,6 @@ public class TrainingService {
         trainingRepository.deleteById(id);
         Training trainingToUpdate = training;
         return trainingRepository.save(trainingToUpdate);
-//                .map(training1 -> {
-//                    training.setDate(training.getDate());
-//                    training.setExercise(training.getExercise());
-//                    training.setSeries(training.getSeries());
-//                    training.setAmount(training.getAmount());
-//                    return trainingRepository.save(training);
-//                })
-//                .orElseGet(() -> {
-//                    training.setId(id);
-//                    return trainingRepository.save(training);
-//                });
     }
 
     public List<Training> findAllWorkouts(){
