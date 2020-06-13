@@ -3,6 +3,8 @@ package com.agiklo.HeathProject.service;
 import com.agiklo.HeathProject.model.Meal;
 import com.agiklo.HeathProject.model.Training;
 import com.agiklo.HeathProject.repository.MealRepository;
+import org.bouncycastle.jcajce.provider.asymmetric.ec.KeyFactorySpi;
+import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -31,8 +33,13 @@ public class MealService {
         return findByTime(meal.getTime());
     }
 
-    public Meal addMeal(Meal meal){
-        return mealRepository.saveAndFlush(meal);
+    public Meal addMeal(Meal meal) {
+        try {
+                return mealRepository.saveAndFlush(meal);
+        }catch (Exception e){
+            e.getMessage().replaceAll("Treść jest zbyt długa", "Treść jest zbyt długa");
+            return meal;
+        }
     }
 
     public Iterable<Meal> allMeals(){
