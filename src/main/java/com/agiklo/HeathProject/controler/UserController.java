@@ -16,11 +16,6 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
     @GetMapping("/access-denied")
     public String accessDenied() {
         return "/error/access-denied";

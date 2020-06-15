@@ -47,7 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/meal/**").authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
                     .defaultSuccessUrl("/workout", true)
                     .permitAll()
                 .and()
