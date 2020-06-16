@@ -4,8 +4,11 @@
 * [Technologies](#technologies)
 
 ### General info
-This project is a website for managing your training and help in defining your diet.
-Here you will find BMI, BMR and other calculators.
+Website for managing your training and help in defining
+your diet.
+The application allows you to save workouts,
+track your progress. Add favorite meals. BMR and BMI
+calculators.
 
 ![Algorithm schema](https://i.imgur.com/ovERztM.jpg)
 
