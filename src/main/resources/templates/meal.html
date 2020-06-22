@@ -41,7 +41,7 @@
                     <tbody>
                     <tr th:each="meal : ${meals}">
                         <td th:text="${meal.name}"></td>
-                        <td th:text="${meal.time}"></td>
+                        <td th:text="${meal.time} + ' minut'"></td>
                         <td th:text="${meal.description}"></td>
                         <td>
                             <div class="btn-group"><button class="btn btn-primary" type="button" style="background-color: rgb(250,106,55);">Opcje</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(234,16,115);"></button>

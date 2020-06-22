@@ -20,5 +20,5 @@ public class Meal {
     private Long id;
     private String name;
     private String description;
-    private Double time;
+    private Integer time;
 }

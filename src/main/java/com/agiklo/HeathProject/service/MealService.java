@@ -28,7 +28,7 @@ public class MealService {
         return findByName(meal.getName());
     }
 
-    public List<Meal> findByTime(double time){
+    public List<Meal> findByTime(int time){
         Meal meal = mealRepository.findByTime(time);
         return findByTime(meal.getTime());
     }
