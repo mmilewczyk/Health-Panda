@@ -34,8 +34,9 @@
                     <tr>
                         <th>Data</th>
                         <th>Ćwiczenie</th>
-                        <th>Ilość serii</th>
+                        <th>Seria</th>
                         <th>Ilość powtórzeń</th>
+                        <th>Ciężar</th>
                         <th><a class="btn btn-primary" role="button" href="/workout/add-new" style="background-color: rgb(234,16,115);">Dodaj ćwiczenie</a></th>
                     </tr>
                     </thead>
@@ -43,8 +44,9 @@
                     <tr th:each="training : ${trainings}">
                         <td th:text="${training.date}"></td>
                         <td th:text="${training.exercise}"></td>
-                        <td th:text="${training.series}"></td>
-                        <td th:text="${training.amount}"></td>
+                        <td th:text="${training.round}"></td>
+                        <td th:text="${training.reps}"></td>
+                        <td th:text="${training.weight}"></td>
                         <td>
                             <div class="btn-group"><button class="btn btn-primary" type="button" style="background-color: rgb(250,106,55);">Opcje</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(234,16,115);"></button>
                                 <div role="menu" class="dropdown-menu">
