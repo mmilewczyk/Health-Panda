@@ -18,7 +18,7 @@ public class TrainingController {
     public TrainingController(TrainingService trainingService) {
         this.trainingService = trainingService;
     }
-
+//
     @RequestMapping(value = "/workout/add-new", method = RequestMethod.GET)
     public String getAddWorkoutPage(Training training, Model model){
         model.addAttribute("training", training);
