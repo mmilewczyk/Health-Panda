@@ -1,7 +1,6 @@
 package com.agiklo.HeathProject.controler;
 
 import com.agiklo.HeathProject.model.BMI;
-import com.agiklo.HeathProject.model.BMR;
 import com.agiklo.HeathProject.service.BMIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

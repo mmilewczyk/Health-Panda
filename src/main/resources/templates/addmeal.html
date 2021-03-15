@@ -1,71 +1,71 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Health Panda</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Responsive-Form-1.css">
-    <link rel="stylesheet" href="assets/css/Responsive-Form.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu-1.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">-->
+<!--    <title>Health Panda</title>-->
+<!--    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">-->
+<!--    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Responsive-Form-1.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Responsive-Form.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Sidebar-Menu-1.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">-->
+<!--    <link rel="stylesheet" href="assets/css/styles.css">-->
+<!--</head>-->
 
-<body style="background-image: url(&quot;assets/img/sierra-nevada-4719258_1920.jpg&quot;);background-position: top;background-size: auto;background-repeat: no-repeat;">
-<div id="wrapper">
-    <div id="sidebar-wrapper" style="background-color: rgb(47,52,56);">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand"> <a href="/" style="color: rgb(232,20,112);"><strong>Health Panda</strong></a></li>
-            <li> <a href="/workout">Ćwiczenia</a></li>
-            <li> <a href="/meal">Posiłki</a><a href="/bmr">Kalkulatory&nbsp;</a></li>
-            <li> <a href="/settings">Ustawienia</a><a href="/logout">Wyloguj się</a></li>
-        </ul>
-    </div>
-    <div class="page-content-wrapper">
-        <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars" style="color: rgb(253,95,13);"></i></a></div>
-    </div>
-</div>
-<div class="container">
-    <div>
-        <form action="#" th:action="@{/meal/add-new}" th:object="${meal}" method="POST">
-            <div class="form-group">
-                <div class="border rounded shadow-none" id="formdiv" style="background-color: #ffffff;">
-                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                        <div class="col-md-8 offset-md-1">
-                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Nazwa</strong></p>
-                        </div>
-                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{name}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="name" placeholder="Nazwa Posiłku"></div>
-                    </div>
-                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                        <div class="col-md-8 offset-md-1 offset-xl-1">
-                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Opis</strong></p>
-                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:14px;">Maksymalnie 250 znaków!</p>
-                        </div>
-                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{description}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Opis"></div>
-                    </div>
-                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                        <div class="col-md-8 offset-md-1">
-                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Czas przygotowywania</strong></p>
-                        </div>
-                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{time}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Czas przygotowywania"></div>
-                    </div>
-                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">
-                        <div class="col-12 col-md-4 offset-md-4"><button class="btn btn-light btn-lg" style="font-family:Roboto, sans-serif;" type="reset">WYCZYŚĆ</button><button class="btn btn-light btn-lg" style="margin-left: 16px;background-color: rgb(232,20,112);color: rgb(255,255,255);"
-                                                                                                                                                                                   type="submit" ><strong>DODAJ</strong></button></div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/Sidebar-Menu.js"></script>
-<div th:insert="fragments/fotter.html"> </div>
-</body>
+<!--<body style="background-image: url(&quot;assets/img/sierra-nevada-4719258_1920.jpg&quot;);background-position: top;background-size: auto;background-repeat: no-repeat;">-->
+<!--<div id="wrapper">-->
+<!--    <div id="sidebar-wrapper" style="background-color: rgb(47,52,56);">-->
+<!--        <ul class="sidebar-nav">-->
+<!--            <li class="sidebar-brand"> <a href="/" style="color: rgb(232,20,112);"><strong>Health Panda</strong></a></li>-->
+<!--            <li> <a href="/workout">Ćwiczenia</a></li>-->
+<!--            <li> <a href="/meal">Posiłki</a><a href="/bmr">Kalkulatory&nbsp;</a></li>-->
+<!--            <li> <a href="/settings">Ustawienia</a><a href="/logout">Wyloguj się</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    <div class="page-content-wrapper">-->
+<!--        <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars" style="color: rgb(253,95,13);"></i></a></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="container">-->
+<!--    <div>-->
+<!--        <form action="#" th:action="@{/meal/add-new}" th:object="${meal}" method="POST">-->
+<!--            <div class="form-group">-->
+<!--                <div class="border rounded shadow-none" id="formdiv" style="background-color: #ffffff;">-->
+<!--                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">-->
+<!--                        <div class="col-md-8 offset-md-1">-->
+<!--                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Nazwa</strong></p>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{name}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="name" placeholder="Nazwa Posiłku"></div>-->
+<!--                    </div>-->
+<!--                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">-->
+<!--                        <div class="col-md-8 offset-md-1 offset-xl-1">-->
+<!--                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Opis</strong></p>-->
+<!--                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:14px;">Maksymalnie 250 znaków!</p>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{description}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Opis"></div>-->
+<!--                    </div>-->
+<!--                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">-->
+<!--                        <div class="col-md-8 offset-md-1">-->
+<!--                            <p style="margin-left:2%;font-family:Roboto, sans-serif;font-size:24px;"><strong>Czas przygotowywania</strong></p>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-10 offset-md-1"><input class="form-control" type="text" th:field="*{time}" style="margin-left:0px;font-family:Roboto, sans-serif;" name="series" placeholder="Czas przygotowywania"></div>-->
+<!--                    </div>-->
+<!--                    <div class="form-row" style="margin-right:0px;margin-left:0px;padding-top:24px;">-->
+<!--                        <div class="col-12 col-md-4 offset-md-4"><button class="btn btn-light btn-lg" style="font-family:Roboto, sans-serif;" type="reset">WYCZYŚĆ</button><button class="btn btn-light btn-lg" style="margin-left: 16px;background-color: rgb(232,20,112);color: rgb(255,255,255);"-->
+<!--                                                                                                                                                                                   type="submit" ><strong>DODAJ</strong></button></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<script src="assets/js/jquery.min.js"></script>-->
+<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
+<!--<script src="assets/js/Sidebar-Menu.js"></script>-->
+<!--<div th:insert="fragments/fotter.html"> </div>-->
+<!--</body>-->
 
-</html>
+<!--</html>-->

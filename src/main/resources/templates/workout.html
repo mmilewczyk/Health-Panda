@@ -1,82 +1,82 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Health Panda</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Bootstrap-4---Table-Fixed-Header.css">
-    <link rel="stylesheet" href="assets/css/Data-Table-1.css">
-    <link rel="stylesheet" href="assets/css/Data-Table.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu-1.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">-->
+<!--    <title>Health Panda</title>-->
+<!--    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Bootstrap-4-&#45;&#45;Table-Fixed-Header.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Data-Table-1.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Data-Table.css">-->
+<!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Sidebar-Menu-1.css">-->
+<!--    <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">-->
+<!--    <link rel="stylesheet" href="assets/css/styles.css">-->
+<!--</head>-->
 
-<body style="background-image: url(&quot;assets/img/sierra-nevada-4719258_1920.jpg&quot;);">
-<div id="wrapper">
-    <div id="sidebar-wrapper" style="background-color: rgb(47,52,56);">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand"> <a href="/" style="color: rgb(232,20,112);"><strong>Health Panda</strong></a></li>
-            <li> <a href="/workout">Ćwiczenia</a></li>
-            <li> <a href="/meal">Posiłki</a><a href="/bmr">Kalkulatory&nbsp;</a></li>
-            <li> <a href="/settings">Ustawienia</a><a href="/logout">Wyloguj się</a></li>
-        </ul>
-    </div>
-    <div class="page-content-wrapper">
-        <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars" style="color: #fd620a;"></i></a>
-            <div class="table-responsive text-center border rounded" style="background-color: rgba(255,255,255,0.83);">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Ćwiczenie</th>
-                        <th>Seria</th>
-                        <th>Ilość powtórzeń</th>
-                        <th>Ciężar</th>
-                        <th><a class="btn btn-primary" role="button" href="/workout/add-new" style="background-color: rgb(234,16,115);">Dodaj ćwiczenie</a></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="training : ${trainings}">
-                        <td th:text="${training.date}"></td>
-                        <td th:text="${training.exercise}"></td>
-                        <td th:text="${training.round}"></td>
-                        <td th:text="${training.reps}"></td>
-                        <td th:text="${training.weight}"></td>
-                        <td>
-                            <div class="btn-group"><button class="btn btn-primary" type="button" style="background-color: rgb(250,106,55);">Opcje</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(234,16,115);"></button>
-                                <div role="menu" class="dropdown-menu">
-                                    <a th:href="${'workout/update?id='+training.id}" th:method="patch" role="presentation" class="dropdown-item" >Edytuj</a>
-                                    <a th:href="${'workout/delete?id='+training.id}" th:method="delete" role="presentation" class="dropdown-item">Usuń</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="btn-group"><button class="btn btn-primary" type="button">Sortuj według</button>
-                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-                    <div role="menu" class="dropdown-menu">
-                        <a th:href="${'/workout/sorted-by-date-newer'}" th:method="get" role="presentation" class="dropdown-item">Najnowsze</a>
-                        <a th:href="${'/workout/sorted-by-date-older'}" th:method="get" role="presentation" class="dropdown-item">Najstarsze</a>
-                        <a th:href="${'/workout/sorted-by-amount-most'}" th:method="get" role="presentation" class="dropdown-item">Najwięcej powtórzeń</a>
-                        <a th:href="${'/workout/sorted-by-amount-least'}" th:method="get" role="presentation" class="dropdown-item">Najmniej powtórzeń</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div th:insert="fragments/fotter.html"> </div>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-<script src="assets/js/Sidebar-Menu.js"></script>
-</body>
+<!--<body style="background-image: url(&quot;assets/img/sierra-nevada-4719258_1920.jpg&quot;);">-->
+<!--<div id="wrapper">-->
+<!--    <div id="sidebar-wrapper" style="background-color: rgb(47,52,56);">-->
+<!--        <ul class="sidebar-nav">-->
+<!--            <li class="sidebar-brand"> <a href="/" style="color: rgb(232,20,112);"><strong>Health Panda</strong></a></li>-->
+<!--            <li> <a href="/workout">Ćwiczenia</a></li>-->
+<!--            <li> <a href="/meal">Posiłki</a><a href="/bmr">Kalkulatory&nbsp;</a></li>-->
+<!--            <li> <a href="/settings">Ustawienia</a><a href="/logout">Wyloguj się</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    <div class="page-content-wrapper">-->
+<!--        <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa fa-bars" style="color: #fd620a;"></i></a>-->
+<!--            <div class="table-responsive text-center border rounded" style="background-color: rgba(255,255,255,0.83);">-->
+<!--                <table class="table">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>Data</th>-->
+<!--                        <th>Ćwiczenie</th>-->
+<!--                        <th>Seria</th>-->
+<!--                        <th>Ilość powtórzeń</th>-->
+<!--                        <th>Ciężar</th>-->
+<!--                        <th><a class="btn btn-primary" role="button" href="/workout/add-new" style="background-color: rgb(234,16,115);">Dodaj ćwiczenie</a></th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr th:each="training : ${trainings}">-->
+<!--                        <td th:text="${training.date}"></td>-->
+<!--                        <td th:text="${training.exercise}"></td>-->
+<!--                        <td th:text="${training.round}"></td>-->
+<!--                        <td th:text="${training.reps}"></td>-->
+<!--                        <td th:text="${training.weight}"></td>-->
+<!--                        <td>-->
+<!--                            <div class="btn-group"><button class="btn btn-primary" type="button" style="background-color: rgb(250,106,55);">Opcje</button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button" style="background-color: rgb(234,16,115);"></button>-->
+<!--                                <div role="menu" class="dropdown-menu">-->
+<!--                                    <a th:href="${'workout/update?id='+training.id}" th:method="patch" role="presentation" class="dropdown-item" >Edytuj</a>-->
+<!--                                    <a th:href="${'workout/delete?id='+training.id}" th:method="delete" role="presentation" class="dropdown-item">Usuń</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--                <div class="btn-group"><button class="btn btn-primary" type="button">Sortuj według</button>-->
+<!--                    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>-->
+<!--                    <div role="menu" class="dropdown-menu">-->
+<!--                        <a th:href="${'/workout/sorted-by-date-newer'}" th:method="get" role="presentation" class="dropdown-item">Najnowsze</a>-->
+<!--                        <a th:href="${'/workout/sorted-by-date-older'}" th:method="get" role="presentation" class="dropdown-item">Najstarsze</a>-->
+<!--                        <a th:href="${'/workout/sorted-by-amount-most'}" th:method="get" role="presentation" class="dropdown-item">Najwięcej powtórzeń</a>-->
+<!--                        <a th:href="${'/workout/sorted-by-amount-least'}" th:method="get" role="presentation" class="dropdown-item">Najmniej powtórzeń</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div th:insert="fragments/fotter.html"> </div>-->
+<!--<script src="assets/js/jquery.min.js"></script>-->
+<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>-->
+<!--<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>-->
+<!--<script src="assets/js/Sidebar-Menu.js"></script>-->
+<!--</body>-->
 
-</html>
+<!--</html>-->

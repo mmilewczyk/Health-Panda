@@ -1,115 +1,115 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <title>Health Panda</title>
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
-  <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/Features-Boxed.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
-</head>
+<!--<head>-->
+<!--  <meta charset="utf-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">-->
+<!--  <title>Health Panda</title>-->
+<!--  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">-->
+<!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">-->
+<!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">-->
+<!--  <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">-->
+<!--  <link rel="stylesheet" href="assets/css/Features-Boxed.css">-->
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">-->
+<!--  <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">-->
+<!--</head>-->
 
-<body>
-<!--cookies start-->
+<!--<body>-->
+<!--&lt;!&ndash;cookies start&ndash;&gt;-->
 
-<div id="simplecookienotification_v01" style="display: block; z-index: 99999; min-height: 35px; width: 300px; position: fixed; background: rgb(43, 54, 67); border: 1px solid rgb(160, 178, 192); text-align: center; color: rgb(119, 119, 119); border-radius: 0px; bottom: 10px; right: 10px;">
-  <div style="padding:10px; margin-left:15px; margin-right:15px; font-size:14px; font-weight:normal;">
-    <span id="simplecookienotification_v01_powiadomienie">Ta strona używa plików cookie w celu usprawnienia i ułatwienia dostępu do serwisu oraz prowadzenia danych statystycznych. Dalsze korzystanie z tej witryny oznacza akceptację tego stanu rzeczy.</span><span id="br_pc_title_html"><br></span>
-    <a id="simplecookienotification_v01_polityka" href="http://jakwylaczyccookie.pl/polityka-cookie/" style="color: rgb(160, 178, 192);">Polityka Prywatności</a><span id="br_pc2_title_html"> &nbsp;&nbsp; </span>
-    <a id="simplecookienotification_v01_info" href="http://jakwylaczyccookie.pl/jak-wylaczyc-pliki-cookies/" style="color: rgb(160, 178, 192);">Jak wyłączyć cookies?</a><span id="br_pc3_title_html"> &nbsp;&nbsp; </span>
-    <a id="simplecookienotification_v01_info2" href="https://nety.pl/cyberbezpieczenstwo" style="color: rgb(160, 178, 192);">Cyberbezpieczeństwo</a><div id="jwc_hr1" style="height: 10px; display: block;"></div>
-    <a id="okbutton" href="javascript:simplecookienotification_v01_create_cookie('simplecookienotification_v01',1,7);" style="position: relative; background: rgb(160, 178, 192); color: rgb(255, 255, 255); padding: 5px 15px; text-decoration: none; font-size: 12px; font-weight: normal; border: 0px solid rgb(43, 54, 67); border-radius: 0px;">AKCEPTUJĘ</a><div id="jwc_hr2" style="height: 10px; display: block;"></div>
-  </div>
-</div>
-<script type="text/javascript">var galTable= new Array(); var galx = 0;</script><script type="text/javascript">function simplecookienotification_v01_create_cookie(name,value,days) { if (days) { var date = new Date(); date.setTime(date.getTime()+(days*24*60*60*1000)); var expires = "; expires="+date.toGMTString(); } else var expires = ""; document.cookie = name+"="+value+expires+"; path=/"; document.getElementById("simplecookienotification_v01").style.display = "none"; } function simplecookienotification_v01_read_cookie(name) { var nameEQ = name + "="; var ca = document.cookie.split(";"); for(var i=0;i < ca.length;i++) { var c = ca[i]; while (c.charAt(0)==" ") c = c.substring(1,c.length); if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length); }return null;}var simplecookienotification_v01_jest = simplecookienotification_v01_read_cookie("simplecookienotification_v01");if(simplecookienotification_v01_jest==1){ document.getElementById("simplecookienotification_v01").style.display = "none"; }</script>
-<!--cookies end-->
-<div th:insert="fragments/navbar.html"> </div>
-<header class="masthead text-center text-white" style="background-image: url(&quot;assets/img/background.jpg&quot;);height: 750px;">
-  <div class="masthead-content">
-    <div class="container">
-      <h1 class="masthead-heading mb-0">Health Panda</h1>
-      <h2 class="masthead-subheading mb-0" style="font-size: 20px;opacity: 1;color: rgb(255,255,255);">Twój najlepszy przyjaciel w przygodzie do osiągnięcia wymarzonej sylwetki.<br><br></h2><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="#about">O nas</a></div>
-  </div>
-  <div class="bg-circle-1 bg-circle" style="height: 1031px;"></div>
-  <div class="bg-circle-2 bg-circle" style="height: 523px;"></div>
-  <div class="d-none bg-circle-3 bg-circle" style="width: 282px;height: 255px;"></div>
-</header>
-<section id="about">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 order-lg-2">
-        <div class="p-5"><img class="rounded img-fluid" data-bs-hover-animate="pulse" src="assets/img/runner.jpeg" style="width: 447px;opacity: 1;filter: invert(0%) sepia(0%);"></div>
-      </div>
-      <div class="col-lg-6 order-lg-1">
-        <div class="p-5">
-          <h2 class="display-4">Krótko o nas!</h2>
-          <p>Jesteśmy nową witryną na rynku, której celem jest pomoc w obserwacji swoich postępów, jak i samego przygotowania do tej pięknej przygody - jaką jest uprawianie sportu.<br><br></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section></section>
-<section></section>
-<section id="services">
-<div class="features-boxed">
-  <div class="container">
-    <div class="intro">
-      <h2 class="text-center" style="height: 3px;font-size: 47px;">Usługi</h2>
-      <p class="text-center"></p>
-    </div>
-    <div class="row justify-content-center features">
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box" style="height: 404px;"><i class="fa fa-calculator icon" data-bs-hover-animate="bounce" style="color: rgb(253,96,12);"></i>
-          <h3 class="name">Kalkulatory dietetyczne</h3>
-          <p class="description">Zastanawiasz się ile powinieneś jeść? Masz dosyć szukania wzorów matematycznych, by wyliczyć swoje zapotrzebowanie kaloryczne? A może chcesz sprawdzić czy twoja waga jest w normie.<br></p>
-          <div class="btn-toolbar">
-            <div class="btn-group" role="group"></div>
-            <div class="btn-group" role="group"></div>
-          </div>
-          <div class="btn-group"><button class="btn btn-primary" type="button" style="background-color: rgb(239,14,114);"><strong>Kalkulatory</strong></button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/bmr">BMR</a><a class="dropdown-item" role="presentation" href="/bmi">BMI</a></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-clock-o icon" data-bs-hover-animate="bounce" style="color: rgb(253,96,12);"></i>
-          <h3 class="name">Śledź swoje postępy</h3>
-          <p class="description">Ćwiczysz regularnie i masz dosyć zastanawiania się czy odnosisz progres w tym co robisz? W Health Panda umożliwiamy ci dodawanie swoich ulubionych ćwiczeń i śledzenie swoich postępów!</p>
-          <a href="/workout"><button class="btn btn-primary" type="button">DOSTĘPNE PO ZALOGOWANIU</button></a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box" style="height: 404px;"><i class="fa fa-heart icon" data-bs-hover-animate="bounce" style="color: rgb(253,96,12);"></i>
-          <h3 class="name">Zapisuj ulubione posiłki</h3>
-          <p class="description">Zjadłeś posiłek który na długo zostanie w twojej pamięci? Zapisz sobie z jakich składników się składał! To na pewno pomoże przygotować go ponownie.</p><button class="btn btn-primary" type="button" style="margin: 12px;"><strong>Wkrótce</strong></button></div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="newsletter-subscribe">
-  <div class="container">
-    <div class="intro">
-      <h2 class="text-center">Zapisz się do newslettera!</h2>
-      <p class="text-center">Otrzymuj od nas regularnie maile z poradami oraz ciekawostkami, które pomogą ci w twojej przygodzie!</p>
-    </div>
-    <form class="form-inline" method="post">
-      <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Twój Email"></div>
-      <div class="form-group"><button class="btn btn-primary" type="submit" style="background-color: rgb(123,127,162);filter: brightness(200%) contrast(133%);">Zapisuje się!</button></div>
-    </form>
-  </div>
-</div>
-</section>
-<!-- Footer -->
-<div th:insert="fragments/fotter.html"> </div>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/bs-init.js"></script>
-</body>
+<!--<div id="simplecookienotification_v01" style="display: block; z-index: 99999; min-height: 35px; width: 300px; position: fixed; background: rgb(43, 54, 67); border: 1px solid rgb(160, 178, 192); text-align: center; color: rgb(119, 119, 119); border-radius: 0px; bottom: 10px; right: 10px;">-->
+<!--  <div style="padding:10px; margin-left:15px; margin-right:15px; font-size:14px; font-weight:normal;">-->
+<!--    <span id="simplecookienotification_v01_powiadomienie">Ta strona używa plików cookie w celu usprawnienia i ułatwienia dostępu do serwisu oraz prowadzenia danych statystycznych. Dalsze korzystanie z tej witryny oznacza akceptację tego stanu rzeczy.</span><span id="br_pc_title_html"><br></span>-->
+<!--    <a id="simplecookienotification_v01_polityka" href="http://jakwylaczyccookie.pl/polityka-cookie/" style="color: rgb(160, 178, 192);">Polityka Prywatności</a><span id="br_pc2_title_html"> &nbsp;&nbsp; </span>-->
+<!--    <a id="simplecookienotification_v01_info" href="http://jakwylaczyccookie.pl/jak-wylaczyc-pliki-cookies/" style="color: rgb(160, 178, 192);">Jak wyłączyć cookies?</a><span id="br_pc3_title_html"> &nbsp;&nbsp; </span>-->
+<!--    <a id="simplecookienotification_v01_info2" href="https://nety.pl/cyberbezpieczenstwo" style="color: rgb(160, 178, 192);">Cyberbezpieczeństwo</a><div id="jwc_hr1" style="height: 10px; display: block;"></div>-->
+<!--    <a id="okbutton" href="javascript:simplecookienotification_v01_create_cookie('simplecookienotification_v01',1,7);" style="position: relative; background: rgb(160, 178, 192); color: rgb(255, 255, 255); padding: 5px 15px; text-decoration: none; font-size: 12px; font-weight: normal; border: 0px solid rgb(43, 54, 67); border-radius: 0px;">AKCEPTUJĘ</a><div id="jwc_hr2" style="height: 10px; display: block;"></div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<script type="text/javascript">var galTable= new Array(); var galx = 0;</script><script type="text/javascript">function simplecookienotification_v01_create_cookie(name,value,days) { if (days) { var date = new Date(); date.setTime(date.getTime()+(days*24*60*60*1000)); var expires = "; expires="+date.toGMTString(); } else var expires = ""; document.cookie = name+"="+value+expires+"; path=/"; document.getElementById("simplecookienotification_v01").style.display = "none"; } function simplecookienotification_v01_read_cookie(name) { var nameEQ = name + "="; var ca = document.cookie.split(";"); for(var i=0;i < ca.length;i++) { var c = ca[i]; while (c.charAt(0)==" ") c = c.substring(1,c.length); if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length); }return null;}var simplecookienotification_v01_jest = simplecookienotification_v01_read_cookie("simplecookienotification_v01");if(simplecookienotification_v01_jest==1){ document.getElementById("simplecookienotification_v01").style.display = "none"; }</script>-->
+<!--&lt;!&ndash;cookies end&ndash;&gt;-->
+<!--<div th:insert="fragments/navbar.html"> </div>-->
+<!--<header class="masthead text-center text-white" style="background-image: url(&quot;assets/img/background.jpg&quot;);height: 750px;">-->
+<!--  <div class="masthead-content">-->
+<!--    <div class="container">-->
+<!--      <h1 class="masthead-heading mb-0">Health Panda</h1>-->
+<!--      <h2 class="masthead-subheading mb-0" style="font-size: 20px;opacity: 1;color: rgb(255,255,255);">Twój najlepszy przyjaciel w przygodzie do osiągnięcia wymarzonej sylwetki.<br><br></h2><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="#about">O nas</a></div>-->
+<!--  </div>-->
+<!--  <div class="bg-circle-1 bg-circle" style="height: 1031px;"></div>-->
+<!--  <div class="bg-circle-2 bg-circle" style="height: 523px;"></div>-->
+<!--  <div class="d-none bg-circle-3 bg-circle" style="width: 282px;height: 255px;"></div>-->
+<!--</header>-->
+<!--<section id="about">-->
+<!--  <div class="container">-->
+<!--    <div class="row align-items-center">-->
+<!--      <div class="col-lg-6 order-lg-2">-->
+<!--        <div class="p-5"><img class="rounded img-fluid" data-bs-hover-animate="pulse" src="assets/img/runner.jpeg" style="width: 447px;opacity: 1;filter: invert(0%) sepia(0%);"></div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-6 order-lg-1">-->
+<!--        <div class="p-5">-->
+<!--          <h2 class="display-4">Krótko o nas!</h2>-->
+<!--          <p>Jesteśmy nową witryną na rynku, której celem jest pomoc w obserwacji swoich postępów, jak i samego przygotowania do tej pięknej przygody - jaką jest uprawianie sportu.<br><br></p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+<!--<section></section>-->
+<!--<section></section>-->
+<!--<section id="services">-->
+<!--<div class="features-boxed">-->
+<!--  <div class="container">-->
+<!--    <div class="intro">-->
+<!--      <h2 class="text-center" style="height: 3px;font-size: 47px;">Usługi</h2>-->
+<!--      <p class="text-center"></p>-->
+<!--    </div>-->
+<!--    <div class="row justify-content-center features">-->
+<!--      <div class="col-sm-6 col-md-5 col-lg-4 item">-->
+<!--        <div class="box" style="height: 404px;"><i class="fa fa-calculator icon" data-bs-hover-animate="bounce" style="color: rgb(253,96,12);"></i>-->
+<!--          <h3 class="name">Kalkulatory dietetyczne</h3>-->
+<!--          <p class="description">Zastanawiasz się ile powinieneś jeść? Masz dosyć szukania wzorów matematycznych, by wyliczyć swoje zapotrzebowanie kaloryczne? A może chcesz sprawdzić czy twoja waga jest w normie.<br></p>-->
+<!--          <div class="btn-toolbar">-->
+<!--            <div class="btn-group" role="group"></div>-->
+<!--            <div class="btn-group" role="group"></div>-->
+<!--          </div>-->
+<!--          <div class="btn-group"><button class="btn btn-primary" type="button" style="background-color: rgb(239,14,114);"><strong>Kalkulatory</strong></button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>-->
+<!--            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/bmr">BMR</a><a class="dropdown-item" role="presentation" href="/bmi">BMI</a></div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-sm-6 col-md-5 col-lg-4 item">-->
+<!--        <div class="box"><i class="fa fa-clock-o icon" data-bs-hover-animate="bounce" style="color: rgb(253,96,12);"></i>-->
+<!--          <h3 class="name">Śledź swoje postępy</h3>-->
+<!--          <p class="description">Ćwiczysz regularnie i masz dosyć zastanawiania się czy odnosisz progres w tym co robisz? W Health Panda umożliwiamy ci dodawanie swoich ulubionych ćwiczeń i śledzenie swoich postępów!</p>-->
+<!--          <a href="/workout"><button class="btn btn-primary" type="button">DOSTĘPNE PO ZALOGOWANIU</button></a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-sm-6 col-md-5 col-lg-4 item">-->
+<!--        <div class="box" style="height: 404px;"><i class="fa fa-heart icon" data-bs-hover-animate="bounce" style="color: rgb(253,96,12);"></i>-->
+<!--          <h3 class="name">Zapisuj ulubione posiłki</h3>-->
+<!--          <p class="description">Zjadłeś posiłek który na długo zostanie w twojej pamięci? Zapisz sobie z jakich składników się składał! To na pewno pomoże przygotować go ponownie.</p><button class="btn btn-primary" type="button" style="margin: 12px;"><strong>Wkrótce</strong></button></div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="newsletter-subscribe">-->
+<!--  <div class="container">-->
+<!--    <div class="intro">-->
+<!--      <h2 class="text-center">Zapisz się do newslettera!</h2>-->
+<!--      <p class="text-center">Otrzymuj od nas regularnie maile z poradami oraz ciekawostkami, które pomogą ci w twojej przygodzie!</p>-->
+<!--    </div>-->
+<!--    <form class="form-inline" method="post">-->
+<!--      <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Twój Email"></div>-->
+<!--      <div class="form-group"><button class="btn btn-primary" type="submit" style="background-color: rgb(123,127,162);filter: brightness(200%) contrast(133%);">Zapisuje się!</button></div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</section>-->
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<div th:insert="fragments/fotter.html"> </div>-->
+<!--<script src="assets/js/jquery.min.js"></script>-->
+<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
+<!--<script src="assets/js/bs-init.js"></script>-->
+<!--</body>-->
 
-</html>
+<!--</html>-->

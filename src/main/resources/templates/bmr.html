@@ -1,51 +1,51 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<!--<head>-->
-<div th:insert="fragments/head.html"> </div>
-<body id="page-top" class="bg-light">
-<div th:insert="fragments/navbar.html"> </div>
+<!--<!DOCTYPE HTML>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--<div th:insert="fragments/head.html"> </div>-->
+<!--<body id="page-top" class="bg-light">-->
+<!--<div th:insert="fragments/navbar.html"> </div>-->
 
-<header>
-<div class="container text-center align-content-center col-sm-9 col-md-7 col-lg-5 mx-auto">
-    <div class="card card-signin my-5">
-        <div class="card-body">
-    <h1>Kalkulator BMR</h1>
-            <p>Oblicz swoje zapotrzebowanie kaloryczne!</p>
-    <form action="#" th:action="@{/bmr}" th:object="${bmr}" method="POST">
-        <p>wiek:  <input type="text" th:field="*{age}"/></p>
-        <p>wzrost:  <input type="text" th:field="*{height}"/> </p>
-        <p>waga:  <input type="text" th:field="*{bodyWeight}"/> </p>
-        <p>
-<!--        <p>Określ swój tryb życia: </p>-->
-        <div class="btn-group">
-            <button class="btn btn-primary" type="button" style="background-color: rgb(239,14,114);"><strong>Określ swój tryb życia:</strong></button>
-            <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-            <div class="dropdown-menu" role="menu">
-                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator" value="Leżący lub siedzący tryb życia, brak aktywności fizycznej"/></a>
-                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator12" value="Praca siedząca, aktywność fizyczna na niskim poziomie"/></a>
-                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator14" value="Praca nie fizyczna, trening 2 razy w tygodniu"/></a>
-                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator16" value="Lekka praca fizyczna, trening 3-4 razy w tygodniu"/></a>
-                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator18" value="Praca fizyczna, trening 5 razy w tygodniu"/></a>
-                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator20" value="Ciężka praca fizyczna, codzienny trening"/></a>
-            </div>
-        </div>
-        <h3><p th:text="'Twoje zapotrzebowanie kaloryczne wynosi ' + ${result} + ' kcal'"></p></h3>
-    </form>
-</div>
-    </div>
-</div>
-</header>
-<!-- Footer -->
-<div th:insert="fragments/fotter.html"> </div>
+<!--<header>-->
+<!--<div class="container text-center align-content-center col-sm-9 col-md-7 col-lg-5 mx-auto">-->
+<!--    <div class="card card-signin my-5">-->
+<!--        <div class="card-body">-->
+<!--    <h1>Kalkulator BMR</h1>-->
+<!--            <p>Oblicz swoje zapotrzebowanie kaloryczne!</p>-->
+<!--    <form action="#" th:action="@{/bmr}" th:object="${bmr}" method="POST">-->
+<!--        <p>wiek:  <input type="text" th:field="*{age}"/></p>-->
+<!--        <p>wzrost:  <input type="text" th:field="*{height}"/> </p>-->
+<!--        <p>waga:  <input type="text" th:field="*{bodyWeight}"/> </p>-->
+<!--        <p>-->
+<!--&lt;!&ndash;        <p>Określ swój tryb życia: </p>&ndash;&gt;-->
+<!--        <div class="btn-group">-->
+<!--            <button class="btn btn-primary" type="button" style="background-color: rgb(239,14,114);"><strong>Określ swój tryb życia:</strong></button>-->
+<!--            <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>-->
+<!--            <div class="dropdown-menu" role="menu">-->
+<!--                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator" value="Leżący lub siedzący tryb życia, brak aktywności fizycznej"/></a>-->
+<!--                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator12" value="Praca siedząca, aktywność fizyczna na niskim poziomie"/></a>-->
+<!--                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator14" value="Praca nie fizyczna, trening 2 razy w tygodniu"/></a>-->
+<!--                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator16" value="Lekka praca fizyczna, trening 3-4 razy w tygodniu"/></a>-->
+<!--                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator18" value="Praca fizyczna, trening 5 razy w tygodniu"/></a>-->
+<!--                <a class = "dropdown"><input type="submit" class="dropdown-item" name="bmrCalculator20" value="Ciężka praca fizyczna, codzienny trening"/></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <h3><p th:text="'Twoje zapotrzebowanie kaloryczne wynosi ' + ${result} + ' kcal'"></p></h3>-->
+<!--    </form>-->
+<!--</div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</header>-->
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<div th:insert="fragments/fotter.html"> </div>-->
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--&lt;!&ndash; Bootstrap core JavaScript &ndash;&gt;-->
+<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
 
-<!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<!--&lt;!&ndash; Plugin JavaScript &ndash;&gt;-->
+<!--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>-->
 
-<!-- Custom JavaScript for this theme -->
-<script src="js/scrolling-nav.js"></script>
-</body>
-</html>
+<!--&lt;!&ndash; Custom JavaScript for this theme &ndash;&gt;-->
+<!--<script src="js/scrolling-nav.js"></script>-->
+<!--</body>-->
+<!--</html>-->
