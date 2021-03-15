@@ -1,4 +1,4 @@
-package com.agiklo.HeathProject.service;
+package com.agiklo.HeathProject.service.calculators;
 
 import com.agiklo.HeathProject.model.BMR;
 import org.springframework.stereotype.Service;
