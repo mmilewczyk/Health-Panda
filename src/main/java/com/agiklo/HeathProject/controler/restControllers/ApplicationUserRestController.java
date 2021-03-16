@@ -18,7 +18,7 @@ public class ApplicationUserRestController {
 
     private final ApplicationUserRepository applicationUserRepository;
 
-    @GetMapping("/api/v2/users")
+    @GetMapping
     public List<ApplicationUser> getAllUsers(){
         return applicationUserRepository.findAll();
     }

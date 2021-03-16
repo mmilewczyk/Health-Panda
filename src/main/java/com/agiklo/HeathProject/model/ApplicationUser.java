@@ -50,6 +50,12 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Workout> workout;
 
+    public ApplicationUser(String email, String password, USER_ROLE userRole) {
+        this.email = email;
+        this.password = password;
+        this.role = userRole;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority =
