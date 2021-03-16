@@ -29,7 +29,7 @@ public class Workout {
     @Column(name = "WORKOUT_ID")
     private Long workoutId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private ApplicationUser user;
 
