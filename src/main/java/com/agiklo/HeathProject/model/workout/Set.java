@@ -21,7 +21,7 @@ public class Set {
             name="sequence_generator",
             sequenceName = "set_sequence",
             allocationSize = 1,
-            initialValue = 100
+            initialValue = 1
     )
     private Long setId;
     private Double weight;
@@ -30,4 +30,9 @@ public class Set {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "EXERCISE_ID", nullable = false)
     private Exercise exercise;
+
+    public Set(Double weight, Integer reps) {
+        this.weight = weight;
+        this.reps = reps;
+    }
 }

@@ -40,4 +40,10 @@ public class Workout {
 
     @Column(name = "WORKOUT_DATE")
     private LocalDateTime dateOfWorkout;
+
+    public Workout(ApplicationUser user, String workoutName, LocalDateTime dateOfWorkout) {
+        this.user = user;
+        this.workoutName = workoutName;
+        this.dateOfWorkout = dateOfWorkout;
+    }
 }
