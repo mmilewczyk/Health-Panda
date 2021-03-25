@@ -3,6 +3,7 @@ package com.agiklo.HeathProject.controler.restControllers;
 import com.agiklo.HeathProject.model.ApplicationUser;
 import com.agiklo.HeathProject.repository.ApplicationUserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class ApplicationUserRestController {
     private final ApplicationUserRepository applicationUserRepository;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ApplicationUser> getAllUsers(){
         return applicationUserRepository.findAll();
     }

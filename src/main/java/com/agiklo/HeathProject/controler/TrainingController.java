@@ -1,79 +1,48 @@
-//package com.agiklo.HeathProject.controler;
-//
-//import com.agiklo.HeathProject.model.workout.Workout;
-//import com.agiklo.HeathProject.service.TrainingService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//
-//@Controller
-//public class TrainingController {
-//
-//    private TrainingService trainingService;
-//
-//    @Autowired
-//    public TrainingController(TrainingService trainingService) {
-//        this.trainingService = trainingService;
-//    }
-////
-//    @RequestMapping(value = "/workout/add-new", method = RequestMethod.GET)
-//    public String getAddWorkoutPage(Workout training, Model model){
-//        model.addAttribute("training", training);
-//        return "addworkout";
-//    }
-//    @RequestMapping(value="/workout/add-new", method = RequestMethod.POST)
-//    public String addWorkout(Workout training, Model model ){
-//        model.addAttribute("result", trainingService.addNewWorkout(training));
-//        return "redirect:/workout";
-//    }
-//
-//    @RequestMapping(value = "/workout/sorted-by-date-newer", method = RequestMethod.GET)
-//    public String workoutsSortedByDateNewer(Model model, String date){
-//        List<Workout> workoutList = trainingService.findAllSortedByDateNewer(date);
-//        model.addAttribute("trainings", workoutList);
-//        return "workout";
-//    }
-//
-//    @RequestMapping(value = "/workout/sorted-by-date-older", method = RequestMethod.GET)
-//    public String workoutsSortedByDateOlder(Model model, String date){
-//        List<Workout> workoutList = trainingService.findAllSortedByDateOlder(date);
-//        model.addAttribute("trainings", workoutList);
-//        return "workout";
-//    }
-//
-//    @RequestMapping(value = "/workout/sorted-by-amount-most", method = RequestMethod.GET)
-//    public String workoutsSortedByAmountMost(Model model, String amount) {
-//        List<Workout> workoutList = trainingService.findAllSortedByAmountMost(amount);
-//        model.addAttribute("trainings", workoutList);
-//        return "workout";
-//    }
-//
-//    @RequestMapping(value = "/workout/sorted-by-amount-least", method = RequestMethod.GET)
-//    public String workoutsSortedByAmountLeast(Model model, String amount) {
-//        List<Workout> workoutList = trainingService.findAllSortedByAmountLeast(amount);
-//        model.addAttribute("trainings", workoutList);
-//        return "workout";
-//    }
-//
-//    @RequestMapping(value = "/workout", method = RequestMethod.GET)
-//    public String showWorkouts(Model model, Workout training){
-//        List<Workout> workoutList = trainingService.findAllWorkouts();
-//        model.addAttribute("trainings", workoutList);
-//        return "workout";
-//    }
-//
-//    @RequestMapping(value = "/workout/update")
-//    public String updateWorkout(@RequestParam Long id, Workout training, Model model) {
-//        model.addAttribute("result", trainingService.editWorkout(training, id));
-//        return "addworkout";
-//    }
-//
-//    @RequestMapping(value = "/workout/delete")
-//    public String delete(@RequestParam Long id){
-//        trainingService.deleteWorkout(id);
-//        return "redirect:/workout";
-//    }
-//}
+package com.agiklo.HeathProject.controler;
+
+import com.agiklo.HeathProject.model.dto.WorkoutDTO;
+import com.agiklo.HeathProject.model.workout.Workout;
+import com.agiklo.HeathProject.service.workout.WorkoutService;
+import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.util.List;
+
+@Controller
+@AllArgsConstructor
+public class TrainingController {
+
+    private final WorkoutService workoutService;
+
+    @GetMapping(value = "/workout/add-new")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public String getAddWorkoutPage(Workout workout, Model model){
+        model.addAttribute("training", workout);
+        return "addworkout";
+    }
+    @PostMapping(value="/workout/add-new")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public String addWorkout(Workout workout, Model model, Principal principal){
+        model.addAttribute("result", workoutService.addNewWorkout(workout, principal));
+        return "redirect:/workout";
+    }
+
+    @GetMapping(value = "/workout")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public String showWorkouts(Model model){
+        List<WorkoutDTO> workoutList = workoutService.getAllWorkouts();
+        model.addAttribute("trainings", workoutList);
+        return "workout";
+    }
+
+    @RequestMapping(value = "/workout/delete/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public String delete(@PathVariable("id") Long id, Principal principal){
+        workoutService.deleteWorkoutById(id, principal);
+        return "redirect:/workout";
+    }
+}

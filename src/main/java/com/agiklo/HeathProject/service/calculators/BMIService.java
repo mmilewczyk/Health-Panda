@@ -1,7 +1,6 @@
 package com.agiklo.HeathProject.service.calculators;
 
 import com.agiklo.HeathProject.model.BMI;
-import com.agiklo.HeathProject.model.BMR;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -7,7 +7,9 @@ import com.agiklo.HeathProject.model.workout.Workout;
 import com.agiklo.HeathProject.repository.ApplicationUserRepository;
 import com.agiklo.HeathProject.repository.WorkoutRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
@@ -36,5 +38,13 @@ public class WorkoutService {
         workout.setUser(user);
         workout.setDateOfWorkout(actualTime);
         return workoutRepository.save(workout);
+    }
+
+    public void deleteWorkoutById(Long id, Principal principal) {
+        Workout workout = workoutRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Workout does not exist"));
+        if (principal.getName().equals(workout.getUser().getEmail())){
+            workoutRepository.deleteById(id);
+        }
     }
 }

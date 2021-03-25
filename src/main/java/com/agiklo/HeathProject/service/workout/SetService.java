@@ -1,7 +1,6 @@
 package com.agiklo.HeathProject.service.workout;
 
 import com.agiklo.HeathProject.mapper.SetMapper;
-import com.agiklo.HeathProject.model.dto.ExerciseDTO;
 import com.agiklo.HeathProject.model.dto.SetDTO;
 import com.agiklo.HeathProject.model.workout.Exercise;
 import com.agiklo.HeathProject.model.workout.Set;
@@ -12,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +42,14 @@ public class SetService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Cannot found specify Exercise"));
         set.setExercise(exercise);
         return setRepository.save(set);
+    }
+
+    public void deleteSetById(Long id, Principal principal) {
+        Set set = setRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Set does not exist"));
+        if (principal.getName().equals(set.getExercise().getWorkout().getUser().getEmail())){
+            setRepository.deleteById(id);
+        }
     }
 
 }

@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BMI {
 
-    private double mass;
-    private double height;
+    private Double mass;
+    private Double height;
 }

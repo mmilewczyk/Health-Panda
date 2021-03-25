@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,5 +36,13 @@ public class ExerciseService {
                 .stream()
                 .map(exerciseMapper::mapExerciseToDTO)
                 .collect(Collectors.toList());
+    }
+
+    public void deleteExerciseById(Long id, Principal principal) {
+        Exercise exercise = exerciseRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Exercise does not exist"));
+        if (principal.getName().equals(exercise.getWorkout().getUser().getEmail())){
+            exerciseRepository.deleteById(id);
+        }
     }
 }
