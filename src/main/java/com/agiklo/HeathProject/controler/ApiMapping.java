@@ -8,5 +8,6 @@ public class ApiMapping {
     public static final String WORKOUTS_REST_URL = API + VERSION + "/workouts";
     public static final String EXERCISES_REST_URL = API + VERSION + "/workouts/exercises";
     public static final String USERS_REST_URL = API + VERSION + "/users";
+    public static final String FOODS_REST_URL = API + VERSION + "/foods";
     public static final String REGISTRATION_REST_URL = API + VERSION + "/registration";
 }

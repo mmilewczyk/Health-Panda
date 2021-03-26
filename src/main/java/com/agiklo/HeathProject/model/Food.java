@@ -17,6 +17,16 @@ import java.time.LocalDateTime;
 public class Food {
 
     @Id
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence_generator"
+    )
+    @SequenceGenerator(
+            name="sequence_generator",
+            sequenceName = "food_sequence",
+            allocationSize = 1,
+            initialValue = 100
+    )
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
