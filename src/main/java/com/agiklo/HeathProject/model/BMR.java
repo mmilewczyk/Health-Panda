@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class BMR {
 
-    private double bodyWeight;
-    private double height;
-    private int age;
+    private Double bodyWeight;
+    private Double height;
+    private Integer age;
 }

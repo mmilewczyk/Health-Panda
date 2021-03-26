@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class BMRService {
 
     public double calculate(BMR bmr){
-         return 66 + (13.7 * bmr.getBodyWeight()) + (5 * bmr.getHeight()) - (6.76 * bmr.getAge());
+        return 66 + (13.7 * bmr.getBodyWeight()) + (5 * bmr.getHeight()) - (6.76 * bmr.getAge());
     }
 
     //1,0 – leżący lub siedzący tryb życia, brak aktywności fizycznej

@@ -39,4 +39,10 @@ public class Food {
 
     private String name;
     private String content;
+
+    public Food(FOOD_CATEGORY category, String name, String content) {
+        this.category = category;
+        this.name = name;
+        this.content = content;
+    }
 }
