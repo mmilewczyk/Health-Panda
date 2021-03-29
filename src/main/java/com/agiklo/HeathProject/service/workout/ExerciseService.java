@@ -43,6 +43,8 @@ public class ExerciseService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Exercise does not exist"));
         if (principal.getName().equals(exercise.getWorkout().getUser().getEmail())){
             exerciseRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not owner of this exercise");
         }
     }
 }

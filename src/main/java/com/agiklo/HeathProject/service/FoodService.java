@@ -60,6 +60,8 @@ public class FoodService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Food does not exist"));
         if (principal.getName().equals(food.getAuthor().getEmail())){
             foodRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not owner of this food");
         }
     }
 }

@@ -49,7 +49,8 @@ public class SetService {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Set does not exist"));
         if (principal.getName().equals(set.getExercise().getWorkout().getUser().getEmail())){
             setRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not owner of this set");
         }
     }
-
 }
