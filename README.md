@@ -3,12 +3,6 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 
-# Warning ⚠️
-I decided to remove almost all of the application code.<br>
-When I created it a year ago, my skills were much worse than they are now.<br>
-I believe that built from scratch, with more knowledge, it will be much better.
-
-
 ### General info
 Website for managing your training and help in defining
 your diet.
@@ -26,8 +20,11 @@ calculators.
 Project is created with:
 * Java 8
 * Maven
-* H2 Database
-* Spring Boot 2.2.6
+* PostgreSQL 13
+* Spring (Boot, Data, Security)
+* JWT
+* Hibernate
+* MapStruct
 * Bootstrap
 * JavaScript
 * HTML and CSS
