@@ -7,6 +7,7 @@ import com.agiklo.HeathProject.model.dto.FoodDTO;
 import com.agiklo.HeathProject.repository.ApplicationUserRepository;
 import com.agiklo.HeathProject.repository.FoodRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,8 +27,9 @@ public class FoodService {
     private final FoodMapper foodMapper;
 
     @Transactional
-    public List<FoodDTO> getAllFoods() {
-        return foodRepository.findAll().stream()
+    public List<FoodDTO> getAllFoods(Pageable pageable) {
+        return foodRepository.findAll(pageable)
+                .stream()
                 .map(foodMapper::mapFoodToDTO)
                 .collect(Collectors.toList());
     }

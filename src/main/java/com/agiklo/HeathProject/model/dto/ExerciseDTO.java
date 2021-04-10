@@ -1,6 +1,5 @@
 package com.agiklo.HeathProject.model.dto;
 
-import com.agiklo.HeathProject.model.workout.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

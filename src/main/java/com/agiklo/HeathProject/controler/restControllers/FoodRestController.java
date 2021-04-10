@@ -4,6 +4,7 @@ import com.agiklo.HeathProject.model.Food;
 import com.agiklo.HeathProject.model.dto.FoodDTO;
 import com.agiklo.HeathProject.service.FoodService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,8 @@ public class FoodRestController {
     private final FoodService foodService;
 
     @GetMapping
-    public ResponseEntity<List<FoodDTO>> getFoods(){
-        return status(HttpStatus.OK).body(foodService.getAllFoods());
+    public ResponseEntity<List<FoodDTO>> getFoods(Pageable pageable){
+        return status(HttpStatus.OK).body(foodService.getAllFoods(pageable));
     }
 
     @GetMapping("/{id}")
