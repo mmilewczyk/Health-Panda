@@ -33,7 +33,7 @@ public class TrainingController {
     }
 
     @GetMapping(value = "/workout")
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public String showWorkouts(Model model, Pageable pageable){
         List<WorkoutDTO> workoutList = workoutService.getAllWorkouts(pageable);
         model.addAttribute("workouts", workoutList);
