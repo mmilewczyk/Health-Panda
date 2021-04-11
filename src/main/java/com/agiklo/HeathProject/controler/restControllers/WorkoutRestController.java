@@ -24,7 +24,7 @@ public class WorkoutRestController {
     private final WorkoutService workoutService;
 
     @GetMapping
-    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ResponseEntity<List<WorkoutDTO>> getAllWorkouts(Pageable pageable) {
         return status(HttpStatus.OK).body(workoutService.getAllWorkouts(pageable));
     }
