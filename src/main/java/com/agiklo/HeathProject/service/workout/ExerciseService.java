@@ -7,6 +7,7 @@ import com.agiklo.HeathProject.model.workout.Workout;
 import com.agiklo.HeathProject.repository.ExerciseRepository;
 import com.agiklo.HeathProject.repository.WorkoutRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -31,8 +32,8 @@ public class ExerciseService {
         return exerciseRepository.save(exercise);
     }
 
-    public List<ExerciseDTO> getAllByWorkoutId(Long id) {
-        return exerciseRepository.getAllByWorkout_WorkoutId(id)
+    public List<ExerciseDTO> getAllByWorkoutId(Long id, Pageable pageable) {
+        return exerciseRepository.getAllByWorkout_WorkoutId(id, pageable)
                 .stream()
                 .map(exerciseMapper::mapExerciseToDTO)
                 .collect(Collectors.toList());
