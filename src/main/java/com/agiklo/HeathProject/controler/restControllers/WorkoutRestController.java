@@ -4,6 +4,7 @@ import com.agiklo.HeathProject.model.dto.WorkoutDTO;
 import com.agiklo.HeathProject.model.workout.Workout;
 import com.agiklo.HeathProject.service.workout.WorkoutService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,9 +24,9 @@ public class WorkoutRestController {
     private final WorkoutService workoutService;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public ResponseEntity<List<WorkoutDTO>> getAllWorkouts() {
-        return status(HttpStatus.OK).body(workoutService.getAllWorkouts());
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public ResponseEntity<List<WorkoutDTO>> getAllWorkouts(Pageable pageable) {
+        return status(HttpStatus.OK).body(workoutService.getAllWorkouts(pageable));
     }
 
     @PostMapping

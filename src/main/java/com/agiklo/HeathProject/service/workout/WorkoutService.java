@@ -7,6 +7,7 @@ import com.agiklo.HeathProject.model.workout.Workout;
 import com.agiklo.HeathProject.repository.ApplicationUserRepository;
 import com.agiklo.HeathProject.repository.WorkoutRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,8 +25,8 @@ public class WorkoutService {
     private final WorkoutMapper workoutMapper;
     private final ApplicationUserRepository applicationUserRepository;
 
-    public List<WorkoutDTO> getAllWorkouts(){
-        return workoutRepository.findAll()
+    public List<WorkoutDTO> getAllWorkouts(Pageable pageable){
+        return workoutRepository.findAll(pageable)
                 .stream()
                 .map(workoutMapper::mapWorkoutToDTO)
                 .collect(Collectors.toList());

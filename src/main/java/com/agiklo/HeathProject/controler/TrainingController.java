@@ -4,6 +4,7 @@ import com.agiklo.HeathProject.model.dto.WorkoutDTO;
 import com.agiklo.HeathProject.model.workout.Workout;
 import com.agiklo.HeathProject.service.workout.WorkoutService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,10 +33,10 @@ public class TrainingController {
     }
 
     @GetMapping(value = "/workout")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public String showWorkouts(Model model){
-        List<WorkoutDTO> workoutList = workoutService.getAllWorkouts();
-        model.addAttribute("trainings", workoutList);
+    //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public String showWorkouts(Model model, Pageable pageable){
+        List<WorkoutDTO> workoutList = workoutService.getAllWorkouts(pageable);
+        model.addAttribute("workouts", workoutList);
         return "workout";
     }
 
