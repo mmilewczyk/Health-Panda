@@ -4,6 +4,7 @@ import com.agiklo.HeathProject.model.dto.SetDTO;
 import com.agiklo.HeathProject.model.workout.Set;
 import com.agiklo.HeathProject.service.workout.SetService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,14 +24,14 @@ public class SetRestController {
 
     @GetMapping
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public ResponseEntity<List<SetDTO>> getAllSets(){
-        return status(HttpStatus.OK).body(setService.getAllSets());
+    public ResponseEntity<List<SetDTO>> getAllSets(Pageable pageable){
+        return status(HttpStatus.OK).body(setService.getAllSets(pageable));
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public ResponseEntity<List<SetDTO>> getAllByExercises(@PathVariable("id") Long id) {
-        return status(HttpStatus.OK).body(setService.getAllByExercises(id));
+    public ResponseEntity<List<SetDTO>> getAllSetsByExercises(@PathVariable("id") Long id, Pageable pageable) {
+        return status(HttpStatus.OK).body(setService.getAllByExercises(id, pageable));
     }
 
     @PostMapping("/{id}")

@@ -7,6 +7,7 @@ import com.agiklo.HeathProject.model.workout.Set;
 import com.agiklo.HeathProject.repository.ExerciseRepository;
 import com.agiklo.HeathProject.repository.SetRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,15 +24,15 @@ public class SetService {
     private final ExerciseRepository exerciseRepository;
     private final SetMapper setMapper;
 
-    public List<SetDTO> getAllSets(){
-        return setRepository.findAll()
+    public List<SetDTO> getAllSets(Pageable pageable){
+        return setRepository.findAll(pageable)
                 .stream()
                 .map(setMapper::mapSetToDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<SetDTO> getAllByExercises(Long id) {
-        return setRepository.getAllByExercise_ExerciseId(id)
+    public List<SetDTO> getAllByExercises(Long id, Pageable pageable) {
+        return setRepository.getAllByExercise_ExerciseId(id, pageable)
                 .stream()
                 .map(setMapper::mapSetToDTO)
                 .collect(Collectors.toList());
