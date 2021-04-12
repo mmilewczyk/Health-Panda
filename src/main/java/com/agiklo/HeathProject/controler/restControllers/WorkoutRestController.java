@@ -25,8 +25,8 @@ public class WorkoutRestController {
 
     @GetMapping
     //@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
-    public ResponseEntity<List<WorkoutDTO>> getAllWorkouts(Pageable pageable) {
-        return status(HttpStatus.OK).body(workoutService.getAllWorkouts(pageable));
+    public ResponseEntity<List<WorkoutDTO>> getAllWorkouts(Principal principal, Pageable pageable) {
+        return status(HttpStatus.OK).body(workoutService.getAllWorkouts(principal, pageable));
     }
 
     @PostMapping

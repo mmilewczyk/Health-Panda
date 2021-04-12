@@ -25,16 +25,16 @@ public class WorkoutService {
     private final WorkoutMapper workoutMapper;
     private final ApplicationUserRepository applicationUserRepository;
 
-    public List<WorkoutDTO> getAllWorkouts(Pageable pageable){
-        return workoutRepository.findAll(pageable)
+    public List<WorkoutDTO> getAllWorkouts(Principal principal, Pageable pageable){
+        ApplicationUser user = getLoginUser(principal);
+        return workoutRepository.findWorkoutsByUser(user, pageable)
                 .stream()
                 .map(workoutMapper::mapWorkoutToDTO)
                 .collect(Collectors.toList());
     }
 
     public Workout addNewWorkout(Workout workout, Principal principal) {
-        ApplicationUser user = applicationUserRepository.findByEmail(principal.getName()).orElseThrow(() ->
-                new IllegalStateException("User not found"));
+        ApplicationUser user = getLoginUser(principal);
         LocalDateTime actualTime = LocalDateTime.now();
         workout.setUser(user);
         workout.setDateOfWorkout(actualTime);
@@ -42,12 +42,21 @@ public class WorkoutService {
     }
 
     public void deleteWorkoutById(Long id, Principal principal) {
-        Workout workout = workoutRepository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Workout does not exist"));
+        Workout workout = getWorkoutById(id);
         if (principal.getName().equals(workout.getUser().getEmail())){
             workoutRepository.deleteById(id);
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not owner of this workout");
         }
+    }
+
+    private ApplicationUser getLoginUser(Principal principal){
+        return applicationUserRepository.findByEmail(principal.getName()).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+    }
+
+    private Workout getWorkoutById(Long id){
+        return workoutRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Workout does not exist"));
     }
 }
