@@ -1,6 +1,7 @@
 package com.agiklo.HeathProject.service.workout;
 
 import com.agiklo.HeathProject.mapper.SetMapper;
+import com.agiklo.HeathProject.model.ApplicationUser;
 import com.agiklo.HeathProject.model.dto.SetDTO;
 import com.agiklo.HeathProject.model.workout.Exercise;
 import com.agiklo.HeathProject.model.workout.Set;
@@ -48,7 +49,7 @@ public class SetService {
     public void deleteSetById(Long id, Principal principal) {
         Set set = setRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Set does not exist"));
-        if (principal.getName().equals(set.getExercise().getWorkout().getUser().getEmail())){
+        if (ApplicationUser.isAuthor(set.getExercise().getWorkout(), principal)){
             setRepository.deleteById(id);
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not owner of this set");

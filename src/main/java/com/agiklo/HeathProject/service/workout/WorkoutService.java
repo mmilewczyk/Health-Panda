@@ -43,7 +43,7 @@ public class WorkoutService {
 
     public void deleteWorkoutById(Long id, Principal principal) {
         Workout workout = getWorkoutById(id);
-        if (principal.getName().equals(workout.getUser().getEmail())){
+        if(ApplicationUser.isAuthor(workout, principal)){
             workoutRepository.deleteById(id);
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not owner of this workout");

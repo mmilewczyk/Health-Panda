@@ -1,6 +1,7 @@
 package com.agiklo.HeathProject.service.workout;
 
 import com.agiklo.HeathProject.mapper.ExerciseMapper;
+import com.agiklo.HeathProject.model.ApplicationUser;
 import com.agiklo.HeathProject.model.dto.ExerciseDTO;
 import com.agiklo.HeathProject.model.workout.Exercise;
 import com.agiklo.HeathProject.model.workout.Workout;
@@ -42,7 +43,7 @@ public class ExerciseService {
     public void deleteExerciseById(Long id, Principal principal) {
         Exercise exercise = exerciseRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Exercise does not exist"));
-        if (principal.getName().equals(exercise.getWorkout().getUser().getEmail())){
+        if (ApplicationUser.isAuthor(exercise.getWorkout(), principal)){
             exerciseRepository.deleteById(id);
         } else {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not owner of this exercise");
